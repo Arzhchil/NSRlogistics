@@ -16,7 +16,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --property:Configuration=Release --os linux 
+      run: dotnet build --property:Configuration=Release --os linux 
    deploy:
     runs-on: self-hosted
     needs: prepare-environment
