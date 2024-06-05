@@ -27,4 +27,4 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
       - name: run
-        run: dotnet run --property:Configuration=Release --os linux 
+        run: dotnet run --configuration Release --os linux 
