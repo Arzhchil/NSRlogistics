@@ -1,4 +1,6 @@
 
+using backend.Services.ConnectionService;
+
 namespace backend
 {
     public class Program
@@ -14,6 +16,9 @@ namespace backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // connection service
+            ConnectionService.ConnectService(builder);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -22,6 +27,9 @@ namespace backend
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            // cors
+            app.UseCors(op => op.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
