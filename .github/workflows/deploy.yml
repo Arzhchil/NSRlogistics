@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Clean
-      run: dotnet clean --configuration Release --os linux 
+      run: dotnet clean --configuration Release 
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
