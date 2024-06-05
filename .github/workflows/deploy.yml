@@ -7,14 +7,14 @@ jobs:
    prepare-environment:
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./backend/backend
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --arch linux
+      run: dotnet build --no-restore
    deploy:
     runs-on: self-hosted
     needs: prepare-environment
