@@ -2,7 +2,7 @@ name: Deploy buy runner
 
 on:
   push:
-    branches: [ "SerhoRames" ]
+    branches: [ "main" ]
 jobs:
    prepare-environment:
     runs-on: self-hosted
