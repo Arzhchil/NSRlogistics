@@ -38,7 +38,7 @@ namespace backend
 
             app.MapControllers();
 
-            app.Run();
+            app.Run(); 
         }
     }
 }
