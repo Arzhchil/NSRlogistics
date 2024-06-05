@@ -20,9 +20,9 @@ jobs:
     needs: prepare-environment
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./backend/backend
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
       - name: run
-        run: dotnet run --property:Configuration=Release --os linux-x64
+        run: dotnet run --property:Configuration=Release --os linux-x64 
