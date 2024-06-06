@@ -18,5 +18,6 @@ namespace backend.Data
         }
 
         public DbSet<Models.File> File { get; set; } = null!;
+        public DbSet<GraphData> GraphData {  get; set; } = null!;
     }
 }

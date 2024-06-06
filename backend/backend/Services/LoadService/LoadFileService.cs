@@ -1,4 +1,5 @@
-﻿using backend.Data;
+﻿using AutoMapper;
+using backend.Data;
 using backend.Interfaces;
 using backend.Models;
 using backend.Static;
@@ -6,18 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
-namespace backend.Services
+namespace backend.Services.LoadService
 {
     /// <summary>
     /// Сервис сохранения файла на сервер
     /// </summary>
-    public class LoadFileService : IFileUpload
+    public class LoadFileService : BaseService, IFileUpload
     {
-        DataContext _context;
         IWebHostEnvironment _appEnvironment;
-        public LoadFileService(DataContext context, IWebHostEnvironment appEnvironment)
+
+        public LoadFileService(DataContext context, IMapper mapper, IWebHostEnvironment appEnvironment)
+            : base(context, mapper)
         {
-            _context = context;
             _appEnvironment = appEnvironment;
         }
 
@@ -42,7 +43,7 @@ namespace backend.Services
                 // копируем файл в папку Files
                 await formFile.CopyToAsync(fileStream);
             }
-
+            
             Models.File file = new Models.File()
             {
                 FileName = Path.GetFileNameWithoutExtension(formFile.FileName),
@@ -51,8 +52,8 @@ namespace backend.Services
             };
 
             // сохранение файла в базу
-            _context.File.Add(file);
-            await _context.SaveChangesAsync();
+            context.File.Add(file);
+            await context.SaveChangesAsync();
 
             return true;
         }
