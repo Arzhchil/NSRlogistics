@@ -11,7 +11,7 @@ namespace backend.Services.ConnectionService
         /// <param name="builder"></param>
         public static void ConnectService(WebApplicationBuilder builder)
         {
-            builder.Services.AddScoped<IInitial, InitialService>();
+            builder.Services.AddScoped<IFileUpload, LoadFileService>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
         }
     }
