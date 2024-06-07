@@ -33,7 +33,6 @@ namespace backend.Migrations
                     ShipName = table.Column<string>(type: "text", nullable: false),
                     ShipClassId = table.Column<int>(type: "integer", nullable: false),
                     Speed = table.Column<double>(type: "double precision", nullable: false),
-                    TypeIceClass = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
