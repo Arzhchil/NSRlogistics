@@ -17,14 +17,3 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --property:Configuration=Release --os linux 
-   deploy:
-    runs-on: self-hosted
-    needs: prepare-environment
-    defaults:
-      run:
-        working-directory: ./backend/backend
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-      - name: run
-        run: dotnet run --configuration Release --os linux 
