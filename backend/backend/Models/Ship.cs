@@ -23,9 +23,17 @@
         public double Speed { get; set; }
 
         /// <summary>
+        /// Gets or sets the ship class identifier.
+        /// </summary>
+        /// <value>
+        /// The ship class identifier.
+        /// </value>
+        public int ShipClassId { get; set; }
+
+        /// <summary>
         /// Тип проходимости
         /// </summary>
-        public TypeIceClass TypeIceClass { get; set; }
+        //public TypeIceClass TypeIceClass { get; set; }
     }
     public enum TypeIceClass
     {
