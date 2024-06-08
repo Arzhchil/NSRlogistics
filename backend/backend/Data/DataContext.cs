@@ -93,6 +93,7 @@ namespace backend.Data
                 new Models.Ship() { Id = 40, ShipName = "YAMAL SPIRIT", ShipClassId = 1, Speed = 14 },
                 new Models.Ship() { Id = 35, ShipName = "НИКОЛАЙ ЧУДОТВОРЕЦ", ShipClassId = 1, Speed = 16 }
                 );
+
             modelBuilder.Entity<GraphData>().HasData(
                 new GraphData() { Id = 1, Latitude = 73.1, Longitude = 80, PointName = "Бухта Север и Диксон", RepId = 1010 },
                 new GraphData() { Id = 2, Latitude = 69.4, Longitude = 86.15, PointName = "Дудинка", RepId = 1007 },
@@ -142,11 +143,19 @@ namespace backend.Data
                 new GraphData() { Id = 46, Latitude = 65.9, Longitude = -169.35, PointName = "Берингов пролив", RepId = 2028 },
                 new GraphData() { Id = 47, Latitude = 55.7, Longitude = 164.25, PointName = "Окно в Азию", RepId = 2031 }
                 );
+
+            modelBuilder.Entity<IntegerIceClass>().HasData(
+                new IntegerIceClass() { Id = 1, MaxSpeed = 21, MinSpeed = 20},
+                new IntegerIceClass() { Id = 2, MaxSpeed = 19, MinSpeed = 15 },
+                new IntegerIceClass() { Id = 3, MaxSpeed = 14, MinSpeed = 10 }
+                );
         }
 
         public DbSet<Models.File> File { get; set; } = null!;
         public DbSet<GraphData> GraphData {  get; set; } = null!;
         public DbSet<Ship> Ship { get; set; } = null!;
         public DbSet<ShipClass> ShipClass { get; set; } = null!;
+        public DbSet<IntegerIceClass> IntegerIceClass { get; set; } = null!;
+        public DbSet<ShipClassIntegerClass> ShipClassIntegerClass { get; set; } = null!;
     }
 }
