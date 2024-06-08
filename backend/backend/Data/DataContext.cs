@@ -93,6 +93,7 @@ namespace backend.Data
                 new Models.Ship() { Id = 40, ShipName = "YAMAL SPIRIT", ShipClassId = 1, Speed = 14 },
                 new Models.Ship() { Id = 35, ShipName = "НИКОЛАЙ ЧУДОТВОРЕЦ", ShipClassId = 1, Speed = 16 }
                 );
+
             modelBuilder.Entity<GraphData>().HasData(
                 new GraphData() { Id = 1, Latitude = 73.1, Longitude = 80, PointName = "Бухта Север и Диксон", RepId = 1010 },
                 new GraphData() { Id = 2, Latitude = 69.4, Longitude = 86.15, PointName = "Дудинка", RepId = 1007 },
@@ -141,13 +142,62 @@ namespace backend.Data
                 new GraphData() { Id = 45, Latitude = 67.58, Longitude = 47.82, PointName = "Индига", RepId = 1016 },
                 new GraphData() { Id = 46, Latitude = 65.9, Longitude = -169.35, PointName = "Берингов пролив", RepId = 2028 },
                 new GraphData() { Id = 47, Latitude = 55.7, Longitude = 164.25, PointName = "Окно в Азию", RepId = 2031 }
-
                 );
+
+            modelBuilder.Entity<IntegerIceClass>().HasData(
+                new IntegerIceClass() { Id = 1, MaxSpeed = 21, MinSpeed = 20},
+                new IntegerIceClass() { Id = 2, MaxSpeed = 19, MinSpeed = 15 },
+                new IntegerIceClass() { Id = 3, MaxSpeed = 14, MinSpeed = 10 }
+                );
+
+            modelBuilder.Entity<ShipClassIntegerClass>().HasData(
+                new ShipClassIntegerClass() { Id = 1, ShipClassId = 1, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 2, ShipClassId = 1, IntegerIceClassId = 2, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 3, ShipClassId = 1, IntegerIceClassId = 3, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+
+                new ShipClassIntegerClass() { Id = 4, ShipClassId = 2, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 5, ShipClassId = 2, IntegerIceClassId = 2, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 6, ShipClassId = 2, IntegerIceClassId = 3, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+
+                new ShipClassIntegerClass() { Id = 7, ShipClassId = 3, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 8, ShipClassId = 3, IntegerIceClassId = 2, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 9, ShipClassId = 3, IntegerIceClassId = 3, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+
+                new ShipClassIntegerClass() { Id = 10, ShipClassId = 4, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 11, ShipClassId = 4, IntegerIceClassId = 2, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 12, ShipClassId = 4, IntegerIceClassId = 3, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+
+                new ShipClassIntegerClass() { Id = 13, ShipClassId = 5, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 14, ShipClassId = 5, IntegerIceClassId = 2, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8 },
+                new ShipClassIntegerClass() { Id = 15, ShipClassId = 5, IntegerIceClassId = 3, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7 },
+
+                new ShipClassIntegerClass() { Id = 16, ShipClassId = 6, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 17, ShipClassId = 6, IntegerIceClassId = 2, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8 },
+                new ShipClassIntegerClass() { Id = 18, ShipClassId = 6, IntegerIceClassId = 3, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7 },
+
+                new ShipClassIntegerClass() { Id = 22, ShipClassId = 7, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 23, ShipClassId = 7, IntegerIceClassId = 2, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8 },
+                new ShipClassIntegerClass() { Id = 24, ShipClassId = 7, IntegerIceClassId = 3, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7 },
+
+                new ShipClassIntegerClass() { Id = 25, ShipClassId = 8, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 26, ShipClassId = 8, IntegerIceClassId = 2, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.6 },
+                new ShipClassIntegerClass() { Id = 27, ShipClassId = 8, IntegerIceClassId = 3, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.15 },
+
+                new ShipClassIntegerClass() { Id = 28, ShipClassId = 9, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 29, ShipClassId = 9, IntegerIceClassId = 2, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 30, ShipClassId = 9, IntegerIceClassId = 3, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+
+                new ShipClassIntegerClass() { Id = 31, ShipClassId = 10, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 32, ShipClassId = 10, IntegerIceClassId = 2, Debuff = true, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 0.9 },
+                new ShipClassIntegerClass() { Id = 33, ShipClassId = 10, IntegerIceClassId = 3, Debuff = true, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 0.75 }
+            );
         }
 
         public DbSet<Models.File> File { get; set; } = null!;
         public DbSet<GraphData> GraphData {  get; set; } = null!;
         public DbSet<Ship> Ship { get; set; } = null!;
         public DbSet<ShipClass> ShipClass { get; set; } = null!;
+        public DbSet<IntegerIceClass> IntegerIceClass { get; set; } = null!;
+        public DbSet<ShipClassIntegerClass> ShipClassIntegerClass { get; set; } = null!;
     }
 }

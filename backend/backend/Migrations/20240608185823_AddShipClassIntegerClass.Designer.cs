@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using backend.Data;
@@ -11,9 +12,11 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240608185823_AddShipClassIntegerClass")]
+    partial class AddShipClassIntegerClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -468,26 +471,6 @@ namespace backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("IntegerIceClass");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MaxSpeed = 21,
-                            MinSpeed = 20
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MaxSpeed = 19,
-                            MinSpeed = 15
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MaxSpeed = 14,
-                            MinSpeed = 10
-                        });
                 });
 
             modelBuilder.Entity("backend.Models.Ship", b =>
@@ -897,10 +880,7 @@ namespace backend.Migrations
                     b.Property<int>("IntegerIceClassId")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("IsCanHelpMove")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsCanSoloMove")
+                    b.Property<bool>("IsCanMove")
                         .HasColumnType("boolean");
 
                     b.Property<int>("ShipClassId")
@@ -913,308 +893,6 @@ namespace backend.Migrations
                     b.HasIndex("ShipClassId");
 
                     b.ToTable("ShipClassIntegerClass");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = false,
-                            ShipClassId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = false,
-                            ShipClassId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = false,
-                            ShipClassId = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 4
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 4
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = false,
-                            ShipClassId = 4
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 5
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Debuff = true,
-                            DebuffValue = 0.80000000000000004,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 5
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Debuff = true,
-                            DebuffValue = 0.69999999999999996,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 5
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 6
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Debuff = true,
-                            DebuffValue = 0.80000000000000004,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 6
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Debuff = true,
-                            DebuffValue = 0.69999999999999996,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 6
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 7
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Debuff = true,
-                            DebuffValue = 0.80000000000000004,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 7
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Debuff = true,
-                            DebuffValue = 0.69999999999999996,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 7
-                        },
-                        new
-                        {
-                            Id = 25,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 8
-                        },
-                        new
-                        {
-                            Id = 26,
-                            Debuff = true,
-                            DebuffValue = 0.59999999999999998,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 8
-                        },
-                        new
-                        {
-                            Id = 27,
-                            Debuff = true,
-                            DebuffValue = 0.14999999999999999,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = true,
-                            IsCanSoloMove = false,
-                            ShipClassId = 8
-                        },
-                        new
-                        {
-                            Id = 28,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 9
-                        },
-                        new
-                        {
-                            Id = 29,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 9
-                        },
-                        new
-                        {
-                            Id = 30,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 9
-                        },
-                        new
-                        {
-                            Id = 31,
-                            Debuff = false,
-                            DebuffValue = 1.0,
-                            IntegerIceClassId = 1,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 10
-                        },
-                        new
-                        {
-                            Id = 32,
-                            Debuff = true,
-                            DebuffValue = 0.90000000000000002,
-                            IntegerIceClassId = 2,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 10
-                        },
-                        new
-                        {
-                            Id = 33,
-                            Debuff = true,
-                            DebuffValue = 0.75,
-                            IntegerIceClassId = 3,
-                            IsCanHelpMove = false,
-                            IsCanSoloMove = true,
-                            ShipClassId = 10
-                        });
                 });
 
             modelBuilder.Entity("backend.Models.Ship", b =>

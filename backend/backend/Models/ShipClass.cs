@@ -11,10 +11,11 @@
         /// Тип корабля
         /// </summary>
         public string ShipType { get; set; } = null!;
-
+            
         /// <summary>
         /// Отношение к кораблю
         /// </summary>
         public List<Ship> Ship { get; set; } = null!;
+        public List<ShipClassIntegerClass> ShipClassIntegerClasses { get; set; } = null!;
     }
 }
