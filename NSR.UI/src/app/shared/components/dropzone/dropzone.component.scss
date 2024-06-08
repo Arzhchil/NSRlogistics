@@ -1,0 +1,15 @@
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropzone.dragging {
+  background-color: #ddd;
+}
+
+button {
+  margin-top: 16px;
+}

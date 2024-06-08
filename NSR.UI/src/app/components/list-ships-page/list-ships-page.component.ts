@@ -51,7 +51,9 @@ export class ListShipsPageComponent implements OnInit {
   ТИКСИ  Arc 4  16  Новый порт  Окно в Европу  понедельник, апреля 25, 2022
   ТАЙБОЛА  Arc 4  16  Рейд Мурманска  Новый порт  суббота, апреля 30, 2022`;
 
-  parseData = (data: string): ShipData[] => {
+  shipsData: ShipData[] = [];
+
+  parseData(data: string): ShipData[] {
     return data
       .trim()
       .split('\n')
@@ -60,12 +62,11 @@ export class ListShipsPageComponent implements OnInit {
           /(.*?)\s{2,}(Arc \d+|Нет)\s{2,}(\d{1,2})\s{2,}(.*?)\s{2,}(.*?)\s{2,}(.*)/
         );
         if (parts) {
-          const [, shipName, iceClass, speed, startPort, endPort, startDate] =
-            parts;
+          const [, shipName, iceClass, speed, startPort, endPort, startDate] = parts;
           return {
             shipName,
             iceClass,
-            speed: parseInt(speed),
+            speed: parseInt(speed, 10),
             startPort,
             endPort,
             startDate,
@@ -73,11 +74,9 @@ export class ListShipsPageComponent implements OnInit {
         }
         throw new Error(`Невозможно запарсить строку: ${line}`);
       });
-  };
+  }
 
   ngOnInit(): void {
-    let t = this;
-    const shipsData = t.parseData(t.rawData);
-    console.log(shipsData);
+    this.shipsData = this.parseData(this.rawData);
   }
 }

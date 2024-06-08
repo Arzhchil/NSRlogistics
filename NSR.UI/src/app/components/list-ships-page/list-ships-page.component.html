@@ -1,1 +1,22 @@
-<p>list-ships-page works!</p>
+<table class="ship-table">
+  <thead>
+    <tr>
+      <th>Название судна</th>
+      <th>Ледовый класс</th>
+      <th>Скорость</th>
+      <th>Порт отправления</th>
+      <th>Порт назначения</th>
+      <th>Дата отправления</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ship of shipsData">
+      <td>{{ ship.shipName }}</td>
+      <td>{{ ship.iceClass }}</td>
+      <td>{{ ship.speed }}</td>
+      <td>{{ ship.startPort }}</td>
+      <td>{{ ship.endPort }}</td>
+      <td>{{ ship.startDate }}</td>
+    </tr>
+  </tbody>
+</table>

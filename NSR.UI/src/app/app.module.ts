@@ -11,6 +11,7 @@ import { GanttChartPageComponent } from './components/gantt-chart-page/gantt-cha
 import { MainComponent } from './components/main/main.component';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { DropzoneComponent } from './shared/components/dropzone/dropzone.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DropzoneComponent } from './shared/components/dropzone/dropzone.compone
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    LeafletModule
+    LeafletModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
