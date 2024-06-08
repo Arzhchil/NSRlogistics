@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using backend.Data;
 using backend.Interfaces;
-using backend.Models;
 using backend.Static;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 
 namespace backend.Services.LoadService
 {
@@ -28,11 +24,12 @@ namespace backend.Services.LoadService
         /// <param name="formFile"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<bool> UploadFile(IFormFile formFile)
+        public async Task<int> UploadFile(IFormFile formFile)
         {
+            // bad request
             if (!IsValidFile(formFile))
             {
-                return false;
+                return 0;
             }
 
             // путь к файлу
@@ -55,7 +52,8 @@ namespace backend.Services.LoadService
             context.File.Add(file);
             await context.SaveChangesAsync();
 
-            return true;
+            int response = context.File.FirstOrDefault(x => x.NameExtension == formFile.FileName).Id;
+            return response;
         }
 
         private bool IsValidFile(IFormFile formFile)

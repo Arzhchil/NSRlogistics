@@ -22,9 +22,9 @@ namespace backend.Controllers
         [HttpPost("/loadFile")]
         public async Task<IActionResult> LoadFile(IFormFile uploadFile)
         {
-            bool isFileUpload = await _fileUpload.UploadFile(uploadFile);
+            int isFileUpload = await _fileUpload.UploadFile(uploadFile);
 
-            if (isFileUpload)
+            if (isFileUpload > 0)
             {
                 return Ok(isFileUpload);
             }
