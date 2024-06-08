@@ -29,16 +29,5 @@
         /// The ship class identifier.
         /// </value>
         public int ShipClassId { get; set; }
-
-        /// <summary>
-        /// Тип проходимости
-        /// </summary>
-        //public TypeIceClass TypeIceClass { get; set; }
-    }
-    public enum TypeIceClass
-    {
-        Class1,
-        Class2,
-        Class3
     }
 }
