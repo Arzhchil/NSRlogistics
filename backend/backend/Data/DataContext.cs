@@ -205,5 +205,7 @@ namespace backend.Data
         public DbSet<ShipClass> ShipClass { get; set; } = null!;
         public DbSet<IntegerIceClass> IntegerIceClass { get; set; } = null!;
         public DbSet<ShipClassIntegerClass> ShipClassIntegerClass { get; set; } = null!;
+
+        public DbSet<Models.Route> Routes { get; set; } = null!;
     }
 }
