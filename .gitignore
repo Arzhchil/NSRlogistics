@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-c:\Task19_2\Task17\backend\backend\Files
+**\backend\backend\Files
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
