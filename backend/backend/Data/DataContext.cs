@@ -149,6 +149,12 @@ namespace backend.Data
                 new IntegerIceClass() { Id = 2, MaxSpeed = 19, MinSpeed = 15 },
                 new IntegerIceClass() { Id = 3, MaxSpeed = 14, MinSpeed = 10 }
                 );
+
+            modelBuilder.Entity<ShipClassIntegerClass>().HasData(
+                new ShipClassIntegerClass() { Id = 1, ShipClassId = 1, IntegerIceClassId = 1, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 2, ShipClassId = 1, IntegerIceClassId = 2, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
+                new ShipClassIntegerClass() { Id = 3, ShipClassId = 1, IntegerIceClassId = 3, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 0 }
+            );
         }
 
         public DbSet<Models.File> File { get; set; } = null!;
