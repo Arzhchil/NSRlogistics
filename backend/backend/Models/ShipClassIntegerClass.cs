@@ -11,7 +11,16 @@
         public IntegerIceClass IntegerIceClass { get; set; } = null!;
         public int IntegerIceClassId { get; set; }
         public bool Debuff { get; set; }
-        public bool IsCanMove { get; set; }
+
+        /// <summary>
+        /// самостоятельное движение
+        /// </summary>
+        public bool IsCanSoloMove { get; set; }
+
+        /// <summary>
+        /// сопровождение
+        /// </summary>
+        public bool IsCanHelpMove { get; set; }
         public double? DebuffValue { get; set; }
     }
 }
