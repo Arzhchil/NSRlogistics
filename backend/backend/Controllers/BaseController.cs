@@ -23,7 +23,7 @@ namespace backend.Controllers
 
         // GET api/<GameServersController>/5
         [HttpGet("{id}")]
-        public virtual T Get(string id)
+        public virtual T Get(Guid id)
         {
             return _service.Get(id);
         }
@@ -37,14 +37,14 @@ namespace backend.Controllers
 
         // PUT api/<GameServersController>/5
         [HttpPut("{id}")]
-        public virtual void Put(string id, [FromBody] T value)
+        public virtual void Put(Guid id, [FromBody] T value)
         {
             _service.Change(id, value);
         }
 
         // DELETE api/<GameServersController>/5
         [HttpDelete("{id}")]
-        public virtual void Delete(string id)
+        public virtual void Delete(Guid id)
         {
             _service.Delete(id);
         }

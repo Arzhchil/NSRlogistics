@@ -17,19 +17,19 @@ namespace backend.Services.CRUDService
             context.SaveChanges();
         }
 
-        public void Change(string id, Models.Route newData)
+        public void Change(Guid id, Models.Route newData)
         {
             context.Routes.Update(newData);
         }
 
-        public void Delete(string id)
+        public void Delete(Guid id)
         {
             var route = Get(id);
             context.Routes.Remove(route);
             context.SaveChanges();
         }
 
-        public Models.Route Get(string id)
+        public Models.Route Get(Guid id)
         {
             return context.Routes.Find(id);
         }

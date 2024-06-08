@@ -2,10 +2,10 @@
 {
     public interface ICRUD<T>
     {
-        T Get(string id);
+        T Get(Guid id);
         ICollection<T> GetList();
-        void Change(string id, T newData);
-        void Delete(string id);
+        void Change(Guid id, T newData);
+        void Delete(Guid id);
         void Add(T newData);
     }
 }

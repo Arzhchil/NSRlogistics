@@ -1,4 +1,5 @@
 ﻿using backend.Interfaces;
+using backend.Services.CRUDService;
 using backend.Services.LoadService;
 using backend.Services.Parser;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace backend.Services.ConnectionService
         {
             builder.Services.AddScoped<IFileUpload, LoadFileService>();
             builder.Services.AddScoped<IFileParser, ParseFileService>();
+            builder.Services.AddScoped<ICRUD<Models.Route>, RouteService>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
         }
     }

@@ -4,10 +4,10 @@
     {
         public Guid Id { get; set; } = new Guid();
 
-        public GraphData Start { get; set; }
-        public int StartId { get; set; }
+        public GraphData? Start { get; set; }
+        public Guid StartId { get; set; }
 
-        public GraphData Finish { get; set; }
-        public int FinishId { get; set; }
+        public GraphData? Finish { get; set; }
+        public Guid FinishId { get; set; }
     }
 }
