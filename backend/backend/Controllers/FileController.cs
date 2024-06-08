@@ -22,11 +22,11 @@ namespace backend.Controllers
         [HttpPost("/loadFile")]
         public async Task<IActionResult> LoadFile(IFormFile uploadFile)
         {
-            int isFileUpload = await _fileUpload.UploadFile(uploadFile);
+            Guid uploadedFileId = await _fileUpload.UploadFile(uploadFile);
 
-            if (isFileUpload > 0)
+            if (!string.IsNullOrEmpty(uploadedFileId.ToString()))
             {
-                return Ok(isFileUpload);
+                return Ok(uploadedFileId);
             }
 
             return BadRequest("Не удалось загрузить файл на сервер");

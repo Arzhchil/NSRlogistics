@@ -5,7 +5,7 @@
     /// </summary>
     public class ShipClass
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// Тип корабля
@@ -16,6 +16,6 @@
         /// Отношение к кораблю
         /// </summary>
         public List<Ship> Ship { get; set; } = null!;
-        public List<ShipClassIntegerClass> ShipClassIntegerClasses { get; set; } = null!;
+        public List<ShipClassIntegerClass> ShipClassIntegerClasses { get; set; } = new List<ShipClassIntegerClass>();
     }
 }
