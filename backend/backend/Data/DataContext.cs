@@ -141,7 +141,6 @@ namespace backend.Data
                 new GraphData() { Id = 45, Latitude = 67.58, Longitude = 47.82, PointName = "Индига", RepId = 1016 },
                 new GraphData() { Id = 46, Latitude = 65.9, Longitude = -169.35, PointName = "Берингов пролив", RepId = 2028 },
                 new GraphData() { Id = 47, Latitude = 55.7, Longitude = 164.25, PointName = "Окно в Азию", RepId = 2031 }
-
                 );
         }
 

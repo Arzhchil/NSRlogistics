@@ -1,7 +1,7 @@
 ﻿namespace backend.Models
 {
     /// <summary>
-    /// накидываем
+    /// Связуюший класс между тяжестью льда и классом судна
     /// </summary>
     public class ShipClassIntegerClass
     {

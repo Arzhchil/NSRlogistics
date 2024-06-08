@@ -3,8 +3,8 @@
     public class IntegerIceClass
     {
         public int Id { get; set; }
-        public int MinWeight { get; set; }
-        public int MaxWeight { get; set; }
-        public List<test> testId { get; set; }
+        public int MinSpeed { get; set; }
+        public int MaxSpeed { get; set; }
+        public List<ShipClassIntegerClass> ShipClassIntegerClasses { get; set; }
     }
 }
