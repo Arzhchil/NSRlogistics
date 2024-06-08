@@ -12,6 +12,7 @@ import { MainComponent } from './components/main/main.component';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { DropzoneComponent } from './shared/components/dropzone/dropzone.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TestingPageComponent } from './components/testing-page/testing-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     GanttChartPageComponent,
     MainComponent,
     NavigationComponent,
-    DropzoneComponent
+    DropzoneComponent,
+    TestingPageComponent
   ],
   imports: [
     BrowserModule,
