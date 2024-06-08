@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240608192146_addSoloMoveHelpMove")]
-    partial class addSoloMoveHelpMove
+    [Migration("20240608205039_SetGuidToDataBase")]
+    partial class SetGuidToDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.File", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("FileName")
                         .IsRequired()
@@ -52,11 +50,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.GraphData", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<double>("Latitude")
                         .HasColumnType("double precision");
@@ -78,7 +74,7 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("2babc793-3095-44b1-8207-5e18a56152ca"),
                             Latitude = 73.099999999999994,
                             Longitude = 80.0,
                             PointName = "Бухта Север и Диксон",
@@ -86,7 +82,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("2c1369ad-2287-4aae-ae7e-c2c7d3d0b612"),
                             Latitude = 69.400000000000006,
                             Longitude = 86.150000000000006,
                             PointName = "Дудинка",
@@ -94,7 +90,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("2f73c202-d037-4fcb-ba14-3a4c8a591f67"),
                             Latitude = 69.900000000000006,
                             Longitude = 44.600000000000001,
                             PointName = "кромка льда на Западе",
@@ -102,7 +98,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("4f24e7a9-0b2b-4a4b-83fd-1f125158a16b"),
                             Latitude = 69.150000000000006,
                             Longitude = 57.68,
                             PointName = "Варандей-Приразломное",
@@ -110,7 +106,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("de7af488-e464-4bc8-baf4-21b20044fa89"),
                             Latitude = 73.0,
                             Longitude = 44.0,
                             PointName = "Штокман",
@@ -118,7 +114,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("68d09485-c84f-4fe8-8030-ce68b276cdd9"),
                             Latitude = 71.5,
                             Longitude = 22.0,
                             PointName = "Окно в Европу",
@@ -126,7 +122,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("1d2600e2-d3b0-4849-ba6a-709720fbb9b8"),
                             Latitude = 74.599999999999994,
                             Longitude = 63.899999999999999,
                             PointName = "Победа месторождение",
@@ -134,7 +130,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("c0b99028-2d0b-4de3-a3a3-7947ffa1429a"),
                             Latitude = 76.400000000000006,
                             Longitude = 86.400000000000006,
                             PointName = "Карское - 3 (центр)",
@@ -142,7 +138,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = new Guid("5685632a-5580-4de5-a9ef-067f1556c7ca"),
                             Latitude = 77.599999999999994,
                             Longitude = 107.7,
                             PointName = "пролив Вилькицкого - 3",
@@ -150,7 +146,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("86d732be-f379-4910-9716-3267539db52e"),
                             Latitude = 74.900000000000006,
                             Longitude = 116.7,
                             PointName = "Лаптевых - 4 (юг)",
@@ -158,7 +154,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 11,
+                            Id = new Guid("2ce903da-f786-4c77-abc2-4b2d31857834"),
                             Latitude = 73.099999999999994,
                             Longitude = 72.700000000000003,
                             PointName = "Вход в Обскую губу",
@@ -166,7 +162,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 12,
+                            Id = new Guid("dc6ef39c-94b5-4468-ac8b-fd3eeef0d022"),
                             Latitude = 68.5,
                             Longitude = 73.700000000000003,
                             PointName = "Новый порт",
@@ -174,7 +170,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 13,
+                            Id = new Guid("ca22d9a8-ce47-4b09-a489-69651b60bb28"),
                             Latitude = 76.75,
                             Longitude = 116.0,
                             PointName = "Лаптевых - 1 (центр)",
@@ -182,7 +178,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 14,
+                            Id = new Guid("15d1f7bb-ad63-4290-aed0-65a28a736603"),
                             Latitude = 74.0,
                             Longitude = 76.700000000000003,
                             PointName = "Карское - 1 (сбор каравана)",
@@ -190,7 +186,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 15,
+                            Id = new Guid("8d21e9d7-0b52-4141-a405-3caf431215e6"),
                             Latitude = 72.349999999999994,
                             Longitude = 79.599999999999994,
                             PointName = "Лескинское м-е",
@@ -198,7 +194,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 16,
+                            Id = new Guid("a8f01e4e-bfe4-48e8-9e82-29968e858662"),
                             Latitude = 70.299999999999997,
                             Longitude = 57.799999999999997,
                             PointName = "Карские ворота",
@@ -206,7 +202,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 17,
+                            Id = new Guid("596d378f-c315-4156-b58c-9c19b6d71bb8"),
                             Latitude = 77.299999999999997,
                             Longitude = 67.700000000000003,
                             PointName = "Мыс Желания",
@@ -214,7 +210,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 18,
+                            Id = new Guid("29c81ca1-a170-40bd-abdc-0d5b66d8734c"),
                             Latitude = 71.739999999999995,
                             Longitude = 184.69999999999999,
                             PointName = "остров Врангеля",
@@ -222,7 +218,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 19,
+                            Id = new Guid("90241e65-425e-4cdf-9072-431eeff79375"),
                             Latitude = 70.700000000000003,
                             Longitude = 170.5,
                             PointName = "Восточно-Сибирское - 1 (восток)",
@@ -230,7 +226,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 20,
+                            Id = new Guid("75de6b98-8576-4e50-ba67-d621149bec19"),
                             Latitude = 77.799999999999997,
                             Longitude = 104.09999999999999,
                             PointName = "пролив Вилькицкого - восток",
@@ -238,7 +234,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 21,
+                            Id = new Guid("281a4f1d-16f7-4b5d-8896-524ffac216b3"),
                             Latitude = 77.700000000000003,
                             Longitude = 99.5,
                             PointName = "пролив Вилькицкого - запад",
@@ -246,7 +242,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 22,
+                            Id = new Guid("d6438812-64c7-4115-ac84-d7e0215a3215"),
                             Latitude = 76.200000000000003,
                             Longitude = 58.299999999999997,
                             PointName = "около Новой Земли",
@@ -254,7 +250,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 23,
+                            Id = new Guid("e84d7f20-abfe-4fc5-9fc8-9d0707ca0a7e"),
                             Latitude = 74.400000000000006,
                             Longitude = 139.0,
                             PointName = "Пролив Санникова - 1",
@@ -262,7 +258,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 24,
+                            Id = new Guid("de163a55-63ce-4dac-9891-4ebcf5428afd"),
                             Latitude = 74.299999999999997,
                             Longitude = 146.69999999999999,
                             PointName = "Пролив Санникова - 2",
@@ -270,7 +266,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 25,
+                            Id = new Guid("44c4eee8-9567-43bb-94a3-07b83522eeda"),
                             Latitude = 74.0,
                             Longitude = 128.09999999999999,
                             PointName = "устье Лены",
@@ -278,7 +274,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 26,
+                            Id = new Guid("e30a9443-02bf-4a76-a7cc-af0295db2d26"),
                             Latitude = 71.299999999999997,
                             Longitude = 72.150000000000006,
                             PointName = "Сабетта",
@@ -286,7 +282,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 27,
+                            Id = new Guid("6e8e4022-22a9-46bd-833c-fe8192555cf8"),
                             Latitude = 69.099999999999994,
                             Longitude = 169.40000000000001,
                             PointName = "мыс.Наглёйнын",
@@ -294,7 +290,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 28,
+                            Id = new Guid("02ba7c84-2f9e-4adb-958f-2dea9960d2b0"),
                             Latitude = 69.900000000000006,
                             Longitude = 179.0,
                             PointName = "пролив Лонга",
@@ -302,7 +298,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 29,
+                            Id = new Guid("fc6f549a-9d25-4fcc-b2bd-138d47d70364"),
                             Latitude = 73.5,
                             Longitude = 169.90000000000001,
                             PointName = "Восточно-Сибирское - 3 (север)",
@@ -310,7 +306,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 30,
+                            Id = new Guid("890b4ebc-1ae2-4893-8fba-b697c751f7c8"),
                             Latitude = 64.950000000000003,
                             Longitude = 40.049999999999997,
                             PointName = "Архангельск",
@@ -318,7 +314,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 31,
+                            Id = new Guid("441e20fe-a97f-40cd-b057-2fdfbff09ec2"),
                             Latitude = 75.900000000000006,
                             Longitude = 152.59999999999999,
                             PointName = "Лаптевых - 3 (восток)",
@@ -326,7 +322,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 32,
+                            Id = new Guid("97b2acba-4e65-4e32-8254-b05c26f2f1d3"),
                             Latitude = 68.370000000000005,
                             Longitude = 54.600000000000001,
                             PointName = "МОТ Печора",
@@ -334,7 +330,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 33,
+                            Id = new Guid("38ddc2cf-b955-4820-9234-5251a4dc7b5d"),
                             Latitude = 73.700000000000003,
                             Longitude = 109.26000000000001,
                             PointName = "Хатангский залив",
@@ -342,7 +338,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 34,
+                            Id = new Guid("8e49592c-8405-4e55-934b-c7d43ed033e2"),
                             Latitude = 72.0,
                             Longitude = 159.5,
                             PointName = "Восточно-Сибирское - 2 (запад)",
@@ -350,7 +346,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 35,
+                            Id = new Guid("fe4e4df3-77dd-4d68-b7cd-90415f33ffee"),
                             Latitude = 72.400000000000006,
                             Longitude = 65.599999999999994,
                             PointName = "Ленинградское-Русановское",
@@ -358,7 +354,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 36,
+                            Id = new Guid("8b8c7fc5-19af-4ec2-b855-30eab15c479e"),
                             Latitude = 71.0,
                             Longitude = 73.730000000000004,
                             PointName = "терминал Утренний",
@@ -366,7 +362,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 37,
+                            Id = new Guid("3570fd5c-1f96-428f-807b-d86715e15249"),
                             Latitude = 76.5,
                             Longitude = 97.599999999999994,
                             PointName = "Таймырский залив",
@@ -374,7 +370,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 38,
+                            Id = new Guid("ed2f1dcd-8012-41b9-b8d3-42180faab66d"),
                             Latitude = 64.200000000000003,
                             Longitude = 188.19999999999999,
                             PointName = "Берингово",
@@ -382,7 +378,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 39,
+                            Id = new Guid("3f1215f9-e1f7-43d9-840b-89e9dd5d8ad8"),
                             Latitude = 60.700000000000003,
                             Longitude = 175.30000000000001,
                             PointName = "кромка льда на Востоке",
@@ -390,7 +386,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 40,
+                            Id = new Guid("0e193900-1f37-4136-93d2-c332948f4dee"),
                             Latitude = 69.75,
                             Longitude = 169.90000000000001,
                             PointName = "Рейд Певек",
@@ -398,7 +394,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 41,
+                            Id = new Guid("ce065896-1eab-44e6-947c-d8a4b6509269"),
                             Latitude = 75.5,
                             Longitude = 131.5,
                             PointName = "Лаптевых - 2 (центр)",
@@ -406,7 +402,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 42,
+                            Id = new Guid("63fbcec7-809a-44e4-ad7d-954add7792a8"),
                             Latitude = 69.5,
                             Longitude = 33.75,
                             PointName = "Рейд Мурманска",
@@ -414,7 +410,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 43,
+                            Id = new Guid("600f5a18-35a5-40a3-b7b2-78d8ca21c2fd"),
                             Latitude = 76.700000000000003,
                             Longitude = 140.80000000000001,
                             PointName = "остров Котельный",
@@ -422,7 +418,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 44,
+                            Id = new Guid("cd27f690-d5ec-4a59-a594-aea9651bc9c6"),
                             Latitude = 74.799999999999997,
                             Longitude = 84.200000000000003,
                             PointName = "Карское - 2 (прибрежный)",
@@ -430,7 +426,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 45,
+                            Id = new Guid("e790e641-3891-4064-b123-8514f5f90b3d"),
                             Latitude = 67.579999999999998,
                             Longitude = 47.82,
                             PointName = "Индига",
@@ -438,7 +434,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 46,
+                            Id = new Guid("3cc9420f-dba7-48db-8401-960c96c56476"),
                             Latitude = 65.900000000000006,
                             Longitude = -169.34999999999999,
                             PointName = "Берингов пролив",
@@ -446,7 +442,7 @@ namespace backend.Migrations
                         },
                         new
                         {
-                            Id = 47,
+                            Id = new Guid("bf1ca7df-5ba2-40b4-9ca1-6ae8bca79f76"),
                             Latitude = 55.700000000000003,
                             Longitude = 164.25,
                             PointName = "Окно в Азию",
@@ -456,11 +452,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.IntegerIceClass", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<int>("MaxSpeed")
                         .HasColumnType("integer");
@@ -475,19 +469,19 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
                             MaxSpeed = 21,
                             MinSpeed = 20
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
                             MaxSpeed = 19,
                             MinSpeed = 15
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
                             MaxSpeed = 14,
                             MinSpeed = 10
                         });
@@ -495,14 +489,12 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.Ship", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ShipClassId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ShipClassId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("ShipName")
                         .IsRequired()
@@ -520,295 +512,295 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            ShipClassId = 6,
+                            Id = new Guid("7b030864-2f86-48d0-ab6b-d78578381a4a"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "ДЮК II",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 2,
-                            ShipClassId = 5,
+                            Id = new Guid("cd987331-6a58-4f66-84bd-faa59efd4ece"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "САРМАТ",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 3,
-                            ShipClassId = 8,
+                            Id = new Guid("07fc7ea1-048f-44d1-adc4-c617be5bde74"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "EDUARD TOLL",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 4,
-                            ShipClassId = 8,
+                            Id = new Guid("239ebab7-61c6-4de3-895b-b1d79805afd4"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "GEORGIY USHAKOV",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 5,
-                            ShipClassId = 8,
+                            Id = new Guid("27a4c77d-0e32-497d-acf2-f482a9eb8950"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "RUDOLF SAMOYLOVICH",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 6,
-                            ShipClassId = 8,
+                            Id = new Guid("08bfc7f6-f981-4640-a81f-ea73eb52f8e5"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "VLADIMIR VORONIN",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 7,
-                            ShipClassId = 8,
+                            Id = new Guid("04a8a1dd-941e-489b-9286-bf8b6f9484b4"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "NIKOLAY YEVGENOV",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 8,
-                            ShipClassId = 8,
+                            Id = new Guid("b4c12b3c-ea21-4958-827e-cd27af5e827c"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "CHRISTOPHE DE MARGERIE",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 9,
-                            ShipClassId = 8,
+                            Id = new Guid("f5d86c42-5d26-4d78-9710-e060677ede63"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "BORIS VILKITSKY",
                             Speed = 19.0
                         },
                         new
                         {
-                            Id = 10,
-                            ShipClassId = 6,
+                            Id = new Guid("521435e2-8a58-4363-b10c-7853d59148ea"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "АРКТИКА-2",
                             Speed = 19.0
                         },
                         new
                         {
-                            Id = 11,
-                            ShipClassId = 6,
+                            Id = new Guid("b8b812bb-21ce-47be-8f3a-84dc7542add8"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "ИНЖЕНЕР ВЕШНЯКОВ",
                             Speed = 19.0
                         },
                         new
                         {
-                            Id = 12,
-                            ShipClassId = 5,
+                            Id = new Guid("bf373b3c-5434-406b-8309-45109e1b9893"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ТАМБЕЙ",
                             Speed = 19.0
                         },
                         new
                         {
-                            Id = 13,
-                            ShipClassId = 8,
+                            Id = new Guid("ea46a007-08d6-4c5a-ad49-38df90ff67ac"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "ШТУРМАН АЛЬБАНОВ",
                             Speed = 19.0
                         },
                         new
                         {
-                            Id = 14,
-                            ShipClassId = 5,
+                            Id = new Guid("94a247e0-1066-4b6e-a9cd-d7fbdb3d6069"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "НИКИФОР БЕГИЧЕВ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 15,
-                            ShipClassId = 8,
+                            Id = new Guid("e2f6e432-9f05-4c5c-aa48-65057b42c7a9"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "НОРИЛЬСКИЙ НИКЕЛЬ",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 16,
-                            ShipClassId = 6,
+                            Id = new Guid("66f3e18c-6183-4c32-9c36-9e7fe42c2225"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "АЙС ИГЛ",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 17,
-                            ShipClassId = 8,
+                            Id = new Guid("b54a07ec-72cf-452f-a051-c56aeb7edd6b"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "ШТУРМАН КОШЕЛЕВ",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 18,
-                            ShipClassId = 8,
+                            Id = new Guid("e8aa5d6e-4b0d-4a80-a478-3c0b8049caab"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "ШТУРМАН ЩЕРБИНИН",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 19,
-                            ShipClassId = 8,
+                            Id = new Guid("2dd884a8-9138-44a1-aa11-4b8a488c18ee"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "ШТУРМАН СКУРАТОВ",
                             Speed = 15.0
                         },
                         new
                         {
-                            Id = 20,
-                            ShipClassId = 6,
+                            Id = new Guid("7397091a-a993-4131-a29f-ff9777386263"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "ИОГАНН МАХМАСТАЛЬ",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 21,
-                            ShipClassId = 8,
+                            Id = new Guid("0c8e34b5-6c4d-4374-9839-c95022902e53"),
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipName = "BORIS SOKOLOV",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 22,
-                            ShipClassId = 6,
+                            Id = new Guid("63b8cd88-66da-4785-98da-e0f98b2d8a54"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "ИНЖЕНЕР ТРУБИН",
                             Speed = 12.0
                         },
                         new
                         {
-                            Id = 23,
-                            ShipClassId = 5,
+                            Id = new Guid("f82386ea-3c86-4dca-87bc-3fd6eaad3d8f"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "БАРЕНЦ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 24,
-                            ShipClassId = 6,
+                            Id = new Guid("de8a0803-5a2c-46f0-b778-d09e53cccae1"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "ПОЛАР КИНГ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 25,
-                            ShipClassId = 5,
+                            Id = new Guid("9a1a53d5-7e23-453e-8581-6b0d4f28cf99"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "МЫС ДЕЖНЕВА",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 26,
-                            ShipClassId = 6,
+                            Id = new Guid("e958b7ab-bc0e-4b1e-ad34-431c5f995ec8"),
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipName = "СЕВМОРПУТЬ",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 27,
-                            ShipClassId = 5,
+                            Id = new Guid("3072968a-ff0b-4b16-844a-0afadc2ebdba"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ГРИГОРИЙ ШЕЛИХОВ",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 28,
-                            ShipClassId = 5,
+                            Id = new Guid("6848bc60-2d88-4fe6-a513-aefb7631f67c"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "УРАРТУ",
                             Speed = 18.0
                         },
                         new
                         {
-                            Id = 29,
-                            ShipClassId = 5,
+                            Id = new Guid("c20e4f9e-2721-45b1-b045-26e11e76ebef"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ФЕСКО ПАРИС",
                             Speed = 18.0
                         },
                         new
                         {
-                            Id = 30,
-                            ShipClassId = 5,
+                            Id = new Guid("e8813678-9ff1-4e11-b8be-fd44dce7a3fe"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ПРОГРЕСС",
                             Speed = 18.0
                         },
                         new
                         {
-                            Id = 31,
-                            ShipClassId = 5,
+                            Id = new Guid("dbbf664a-8b38-4fbd-8c71-73c080ec5bd3"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "МИХАИЛ БРИТНЕВ",
                             Speed = 18.0
                         },
                         new
                         {
-                            Id = 32,
-                            ShipClassId = 5,
+                            Id = new Guid("5ade09a1-3805-46dd-bdb7-ed6cb2b500a0"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "САБЕТТА",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 33,
-                            ShipClassId = 5,
+                            Id = new Guid("a9af71a8-4600-4c87-9634-3e579f64abcb"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ГЕОРГИЙ УШАКОВ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 34,
-                            ShipClassId = 5,
+                            Id = new Guid("d09a0578-ba93-410d-94fd-8943baa95a7c"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "СЕВЕРНЫЙ ПРОЕКТ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 36,
-                            ShipClassId = 5,
+                            Id = new Guid("1b35f469-aa66-4d20-9bb8-deeae4ac09ac"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "БЕРИНГ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 37,
-                            ShipClassId = 5,
+                            Id = new Guid("c64fd006-ef94-4be4-b868-a5f8104dcd5d"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ТОЛБУХИН",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 38,
-                            ShipClassId = 5,
+                            Id = new Guid("0d992970-98e1-4e9e-bb32-9a97e2c87ddd"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ЯМАЛ КРЕЧЕТ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 39,
-                            ShipClassId = 5,
+                            Id = new Guid("99fd9224-c3ec-4c73-a441-800ef9ae4e49"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "CLEAN VISION",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 41,
-                            ShipClassId = 5,
+                            Id = new Guid("ab8d0789-99a0-4c86-aa05-f1d123ea7f1f"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ТИКСИ",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 42,
-                            ShipClassId = 5,
+                            Id = new Guid("c88bb079-4420-4f24-87de-a6271c1d216b"),
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipName = "ТАЙБОЛА",
                             Speed = 16.0
                         },
                         new
                         {
-                            Id = 40,
-                            ShipClassId = 1,
+                            Id = new Guid("fd65953f-9f79-46f2-975a-aaadbadeff71"),
+                            ShipClassId = new Guid("d28ea89c-95c8-43b1-ba63-46443c02d58c"),
                             ShipName = "YAMAL SPIRIT",
                             Speed = 14.0
                         },
                         new
                         {
-                            Id = 35,
-                            ShipClassId = 1,
+                            Id = new Guid("29a9b0cc-cf96-4666-83ed-1422900b85ff"),
+                            ShipClassId = new Guid("d28ea89c-95c8-43b1-ba63-46443c02d58c"),
                             ShipName = "НИКОЛАЙ ЧУДОТВОРЕЦ",
                             Speed = 16.0
                         });
@@ -816,11 +808,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.ShipClass", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("ShipType")
                         .IsRequired()
@@ -833,63 +823,61 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("d28ea89c-95c8-43b1-ba63-46443c02d58c"),
                             ShipType = "Without class"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("49b35e3d-d6fc-405f-a39f-340663d8c622"),
                             ShipType = "Ice1"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("a253c1a5-83ae-4217-9daa-f48c562ddd06"),
                             ShipType = "Ice2"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("7b82569c-4c1c-4083-b076-7a1ffd2c16a8"),
                             ShipType = "Ice3"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e"),
                             ShipType = "Arc4"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e"),
                             ShipType = "Arc5"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = new Guid("c1760005-d3b5-42ce-88d9-4821e37a2515"),
                             ShipType = "Arc6"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce"),
                             ShipType = "Arc7"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = new Guid("ac31310c-1290-41a6-b013-0a2f895cdc63"),
                             ShipType = "Arc9-1"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = new Guid("a3a8f25c-5f0c-4ced-8a16-c20e9b00ec30"),
                             ShipType = "Arc9-2"
                         });
                 });
 
             modelBuilder.Entity("backend.Models.ShipClassIntegerClass", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<bool>("Debuff")
                         .HasColumnType("boolean");
@@ -897,8 +885,8 @@ namespace backend.Migrations
                     b.Property<double?>("DebuffValue")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("IntegerIceClassId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("IntegerIceClassId")
+                        .HasColumnType("uuid");
 
                     b.Property<bool>("IsCanHelpMove")
                         .HasColumnType("boolean");
@@ -906,8 +894,8 @@ namespace backend.Migrations
                     b.Property<bool>("IsCanSoloMove")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("ShipClassId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ShipClassId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -916,6 +904,308 @@ namespace backend.Migrations
                     b.HasIndex("ShipClassId");
 
                     b.ToTable("ShipClassIntegerClass");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0b965bc5-9a48-4783-8b3a-0e8a0d5e4f73"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("d28ea89c-95c8-43b1-ba63-46443c02d58c")
+                        },
+                        new
+                        {
+                            Id = new Guid("578aac67-8c4a-4526-be4a-df7cd45b5070"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("d28ea89c-95c8-43b1-ba63-46443c02d58c")
+                        },
+                        new
+                        {
+                            Id = new Guid("5ec177d0-1bb2-48e5-81a8-87f284332b5f"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("d28ea89c-95c8-43b1-ba63-46443c02d58c")
+                        },
+                        new
+                        {
+                            Id = new Guid("f411c13d-c65e-4737-981a-9bb708243960"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("49b35e3d-d6fc-405f-a39f-340663d8c622")
+                        },
+                        new
+                        {
+                            Id = new Guid("0635daf6-6ecb-413f-a8fa-8ec18bc19a8b"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("49b35e3d-d6fc-405f-a39f-340663d8c622")
+                        },
+                        new
+                        {
+                            Id = new Guid("20175b78-a758-4a21-9557-1ef89a239626"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("49b35e3d-d6fc-405f-a39f-340663d8c622")
+                        },
+                        new
+                        {
+                            Id = new Guid("fa763465-19f5-4f0c-a73e-86d3c3e4c984"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("a253c1a5-83ae-4217-9daa-f48c562ddd06")
+                        },
+                        new
+                        {
+                            Id = new Guid("e9eb5d56-c26a-4f1c-90ff-8bfaf872e9a6"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("a253c1a5-83ae-4217-9daa-f48c562ddd06")
+                        },
+                        new
+                        {
+                            Id = new Guid("fd32093b-71d9-4b27-a32b-6603a17bc409"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("a253c1a5-83ae-4217-9daa-f48c562ddd06")
+                        },
+                        new
+                        {
+                            Id = new Guid("5b38e425-2b84-4279-bf7e-fd317c182b30"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("7b82569c-4c1c-4083-b076-7a1ffd2c16a8")
+                        },
+                        new
+                        {
+                            Id = new Guid("d72f6b94-bc74-4283-9936-27c1d59a44dc"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("7b82569c-4c1c-4083-b076-7a1ffd2c16a8")
+                        },
+                        new
+                        {
+                            Id = new Guid("ae37ec78-b6b7-4d4e-bb4c-e5dd65dd20fd"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("7b82569c-4c1c-4083-b076-7a1ffd2c16a8")
+                        },
+                        new
+                        {
+                            Id = new Guid("41b7b75c-1cab-431e-964e-83e2cf265bfa"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e")
+                        },
+                        new
+                        {
+                            Id = new Guid("a22765fe-da70-42b6-b901-ec1fac292219"),
+                            Debuff = true,
+                            DebuffValue = 0.80000000000000004,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e")
+                        },
+                        new
+                        {
+                            Id = new Guid("0a05f59d-a45b-4663-a4af-0750ca5a4aa3"),
+                            Debuff = true,
+                            DebuffValue = 0.69999999999999996,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("69155bb6-229c-4a7b-87d4-3b9072c6cd8e")
+                        },
+                        new
+                        {
+                            Id = new Guid("1dcec9c2-e343-4b0d-b003-79ce20a02c7b"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e")
+                        },
+                        new
+                        {
+                            Id = new Guid("055c4950-bf85-4bb2-9803-df9b300a61ba"),
+                            Debuff = true,
+                            DebuffValue = 0.80000000000000004,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e")
+                        },
+                        new
+                        {
+                            Id = new Guid("15297413-4fd1-4d11-ab97-e527a3c3f801"),
+                            Debuff = true,
+                            DebuffValue = 0.69999999999999996,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("f2d3b63f-e026-44e7-915c-70ae695b4b1e")
+                        },
+                        new
+                        {
+                            Id = new Guid("70cb16ed-b9f7-4eb1-9401-c752ff475e19"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("c1760005-d3b5-42ce-88d9-4821e37a2515")
+                        },
+                        new
+                        {
+                            Id = new Guid("2fe01a5c-003f-4ca2-a020-b1eec46bf98a"),
+                            Debuff = true,
+                            DebuffValue = 0.80000000000000004,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("c1760005-d3b5-42ce-88d9-4821e37a2515")
+                        },
+                        new
+                        {
+                            Id = new Guid("c7a74df5-7ac2-4181-afc9-70ad87c5416a"),
+                            Debuff = true,
+                            DebuffValue = 0.69999999999999996,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("c1760005-d3b5-42ce-88d9-4821e37a2515")
+                        },
+                        new
+                        {
+                            Id = new Guid("482ee419-1bde-4874-85c7-743cf8aa4c57"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce")
+                        },
+                        new
+                        {
+                            Id = new Guid("219d7d0f-dcac-40a4-a38e-a8ca4a214418"),
+                            Debuff = true,
+                            DebuffValue = 0.59999999999999998,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce")
+                        },
+                        new
+                        {
+                            Id = new Guid("729d8232-a0c7-4616-890b-c77452b1e0dc"),
+                            Debuff = true,
+                            DebuffValue = 0.14999999999999999,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = true,
+                            IsCanSoloMove = false,
+                            ShipClassId = new Guid("ff8b5898-d2a1-4be3-acd5-8f2320e885ce")
+                        },
+                        new
+                        {
+                            Id = new Guid("8c2e81e3-bd55-42d7-ae22-e7a750cd83a7"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("ac31310c-1290-41a6-b013-0a2f895cdc63")
+                        },
+                        new
+                        {
+                            Id = new Guid("fecf6924-d4c7-4fad-8d09-895d15df3e9a"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("ac31310c-1290-41a6-b013-0a2f895cdc63")
+                        },
+                        new
+                        {
+                            Id = new Guid("8a217850-ab70-4a21-8a5d-072b9e5de22c"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("ac31310c-1290-41a6-b013-0a2f895cdc63")
+                        },
+                        new
+                        {
+                            Id = new Guid("43bcc9f0-811f-4b6e-acb5-0bf24c08c994"),
+                            Debuff = false,
+                            DebuffValue = 1.0,
+                            IntegerIceClassId = new Guid("716381e8-b93d-4a43-873e-41c4e035ae53"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("a3a8f25c-5f0c-4ced-8a16-c20e9b00ec30")
+                        },
+                        new
+                        {
+                            Id = new Guid("dbdf4fa4-6d25-41a4-874c-f6e67261b383"),
+                            Debuff = true,
+                            DebuffValue = 0.90000000000000002,
+                            IntegerIceClassId = new Guid("52322012-7370-4cc5-9465-dd5b8c2ec807"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("a3a8f25c-5f0c-4ced-8a16-c20e9b00ec30")
+                        },
+                        new
+                        {
+                            Id = new Guid("2dd7f476-6e79-4682-b2d1-d575d1be1289"),
+                            Debuff = true,
+                            DebuffValue = 0.75,
+                            IntegerIceClassId = new Guid("fb6a7a09-95ad-4e62-acac-217dd899ad45"),
+                            IsCanHelpMove = false,
+                            IsCanSoloMove = true,
+                            ShipClassId = new Guid("a3a8f25c-5f0c-4ced-8a16-c20e9b00ec30")
+                        });
                 });
 
             modelBuilder.Entity("backend.Models.Ship", b =>

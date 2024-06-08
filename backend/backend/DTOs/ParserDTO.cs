@@ -2,6 +2,6 @@
 {
     public class ParserDTO
     {
-        public int FileId { get; set; }
+        public Guid FileId { get; set; }
     }
 }

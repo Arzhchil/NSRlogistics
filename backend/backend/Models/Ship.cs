@@ -5,7 +5,7 @@
     /// </summary>
     public class Ship
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// Имя корабля
@@ -28,6 +28,6 @@
         /// <value>
         /// The ship class identifier.
         /// </value>
-        public int ShipClassId { get; set; }
+        public Guid ShipClassId { get; set; }
     }
 }
