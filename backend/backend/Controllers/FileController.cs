@@ -29,7 +29,7 @@ namespace backend.Controllers
                 return Ok(isFileUpload);
             }
 
-            return BadRequest(isFileUpload);
+            return BadRequest("Не удалось загрузить файл на сервер");
         }
     }
 }

@@ -2,6 +2,7 @@
 using backend.Data;
 using backend.Interfaces;
 using backend.Static;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace backend.Services.LoadService
 {
@@ -35,7 +36,7 @@ namespace backend.Services.LoadService
             // путь к файлу
             string filePath = StaticData.FilePath + formFile.FileName;
 
-            using (var fileStream = new FileStream(_appEnvironment.WebRootPath + filePath, FileMode.Create))
+            using (FileStream fileStream = new FileStream(_appEnvironment.WebRootPath + filePath, FileMode.Create))
             {
                 // копируем файл в папку Files
                 await formFile.CopyToAsync(fileStream);
@@ -56,6 +57,11 @@ namespace backend.Services.LoadService
             return response;
         }
 
+        /// <summary>
+        /// Проверка валидности загружаемого файла
+        /// </summary>
+        /// <param name="formFile"></param>
+        /// <returns></returns>
         private bool IsValidFile(IFormFile formFile)
         {
             if (formFile == null)
@@ -63,6 +69,10 @@ namespace backend.Services.LoadService
                 return false;
             }
             if (string.IsNullOrEmpty(Path.GetFileNameWithoutExtension(formFile.FileName)))
+            {
+                return false;
+            }
+            if (!Path.GetExtension(formFile.FileName).Equals(".xlsx"))
             {
                 return false;
             }

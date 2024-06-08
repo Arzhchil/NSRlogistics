@@ -1,5 +1,6 @@
 ﻿using backend.Interfaces;
 using backend.Services.LoadService;
+using backend.Services.Parser;
 using System.Collections.Generic;
 
 namespace backend.Services.ConnectionService
@@ -13,6 +14,7 @@ namespace backend.Services.ConnectionService
         public static void ConnectService(WebApplicationBuilder builder)
         {
             builder.Services.AddScoped<IFileUpload, LoadFileService>();
+            builder.Services.AddScoped<IFileParser, ParseFileService>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
         }
     }
