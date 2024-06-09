@@ -1,4 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.leaflet-control-attribution.leaflet-control a{
+  display: none !important;
+}
+
+$color-background: #E0F7FA;
+
+$color-inner-blocks: #FFFFFF;
+
+$color-headings: #01579B;
+
+$color-text-main: #37474F;
+
+$color-text-secondary: #607D8B;
+
+$color-button-primary: #0288D1;
+$color-button-secondary: #26A69A;
+
+body {
+  background-color: $color-background !important;
+  color: $color-text-main !important;
+}
+
+h3 {
+  color: $color-headings;
+}
+
+.header {
+  background-color: $color-inner-blocks;
+}
+
+.button-primary {
+  background-color: $color-button-primary;
+  color: $color-inner-blocks;
+}
+
+.button-secondary {
+  background-color: $color-button-secondary;
+  color: $color-inner-blocks;
+}
+
+.secondary-text {
+  color: $color-text-secondary;
+}
