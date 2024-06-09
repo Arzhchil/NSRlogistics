@@ -16,37 +16,37 @@ namespace backend.Controllers
 
         // GET: api/<GameServersController>
         [HttpGet]
-        public virtual IEnumerable<T> Get()
+        public async virtual Task<IEnumerable<T>> Get()
         {
-            return _service.GetList();
+            return await _service.GetList();
         }
 
         // GET api/<GameServersController>/5
         [HttpGet("{id}")]
-        public virtual T Get(Guid id)
+        public async virtual Task<T> Get(Guid id)
         {
-            return _service.Get(id);
+            return await _service.Get(id);
         }
 
         // POST api/<GameServersController>
         [HttpPost]
-        public virtual void Post([FromBody] T value)
+        public async virtual Task<ActionResult<bool>> Post([FromBody] T value)
         {
-            _service.Add(value);
+            return await _service.Add(value);
         }
 
         // PUT api/<GameServersController>/5
         [HttpPut("{id}")]
-        public virtual void Put(Guid id, [FromBody] T value)
+        public async virtual Task<ActionResult<bool>> Put(Guid id, [FromBody] T value)
         {
-            _service.Change(id, value);
+            return await _service.Change(id, value);
         }
 
         // DELETE api/<GameServersController>/5
         [HttpDelete("{id}")]
-        public virtual void Delete(Guid id)
+        public async virtual Task<ActionResult<bool>> Delete(Guid id)
         {
-            _service.Delete(id);
+            return await _service.Delete(id);
         }
     }
 }
