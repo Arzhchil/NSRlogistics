@@ -51,7 +51,7 @@ namespace backend.Services.CRUDService
         /// <exception cref="Exception"></exception>
         public async Task<ActionResult<bool>> Change(Guid id, ShipCrudDTO newData)
         {
-            Ship? ship = await context.Ship.Where(x => x.Id == id).FirstOrDefaultAsync();
+            Ship? ship = await context.Ship.FindAsync(id);
             if (ship == null)
             {
                 throw new Exception("Не удалось найти судно по указанному идентификатору.");

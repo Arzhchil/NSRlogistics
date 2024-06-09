@@ -23,7 +23,7 @@ namespace backend.Services.CRUDService
         public async Task<ActionResult<bool>> Change(Guid id, Models.Route newData)
         {
             context.Routes.Update(newData);
-
+            await context.SaveChangesAsync();
             return true;
         }
 
