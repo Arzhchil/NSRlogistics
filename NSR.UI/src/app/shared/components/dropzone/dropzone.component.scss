@@ -1,15 +1,43 @@
+$color-background: #e0f7fa;
+
+$color-inner-blocks: #ffffff;
+
+$color-headings: #01579b;
+
+$color-text-main: #37474f;
+
+$color-text-secondary: #607d8b;
+
+$color-button-primary: #0288d1;
+$color-button-secondary: #26a69a;
+
 .dropzone {
-  border: 2px dashed #ccc;
+  max-width: 800px;
+  width: 100%;
+  border: 2px dashed #607d8b;
   border-radius: 4px;
   padding: 20px;
   text-align: center;
   transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 15px #26a69a;
 }
 
 .dropzone.dragging {
   background-color: #ddd;
 }
 
-button {
+.dropzone-btn {
   margin-top: 16px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: none;
+  transition: background-color 0.3s ease-in-out, color 0.3s  ease-in-out;
+
+  &:hover {
+    background-color: #1d7d75;
+  }
+  &:active {
+    background-color: #1e5a54;
+    color: #ffffff;
+  }
 }

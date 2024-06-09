@@ -13,6 +13,7 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 import { DropzoneComponent } from './shared/components/dropzone/dropzone.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TestingPageComponent } from './components/testing-page/testing-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TestingPageComponent } from './components/testing-page/testing-page.com
     AppRoutingModule,
     NgbModule,
     LeafletModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

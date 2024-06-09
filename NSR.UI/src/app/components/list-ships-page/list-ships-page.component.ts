@@ -1,82 +1,127 @@
 import { Component, OnInit } from '@angular/core';
 import { ShipData } from 'src/app/shared/models';
+import { GuidGenerateService, PostRouteService } from 'src/app/shared/services';
+import { Point, RouteModel } from 'src/app/shared/models';
+import { v4 as uuidv4 } from 'uuid';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-list-ships-page',
   templateUrl: './list-ships-page.component.html',
   styleUrls: ['./list-ships-page.component.scss'],
 })
-export class ListShipsPageComponent implements OnInit {
-  rawData = `
-  ДЮК II  Arc 5  15  Новый порт  Рейд Мурманска  вторник, марта 01, 2022
-  САРМАТ  Arc 4  15  Сабетта  Архангельск  среда, марта 02, 2022
-  EDUARD TOLL  Arc 7  15  Сабетта  Рейд Мурманска  пятница, марта 04, 2022
-  GEORGIY USHAKOV  Arc 7  15  Штокман  Пролив Лонга  понедельник, марта 07, 2022
-  RUDOLF SAMOYLOVICH  Arc 7  15  Новый порт  устье Лены  вторник, марта 08, 2022
-  VLADIMIR VORONIN  Arc 7  15  Сабетта  Пролив Лонга  суббота, марта 12, 2022
-  NIKOLAY YEVGENOV  Arc 7  14  Терминал Утренний  Пролив Лонга  воскресенье, марта 13, 2022
-  CHRISTOPHE DE MARGERIE  Arc 7  14  Окно в Европу  Терминал Утренний  понедельник, марта 07, 2022
-  BORIS VILKITSKY  Arc 7  19  Окно в Европу  Терминал Утренний  понедельник, марта 07, 2022
-  АРКТИКА-2  Arc 5  19  Терминал Утренний  устье Лены  вторник, марта 15, 2022
-  ИНЖЕНЕР ВЕШНЯКОВ  Arc 5  19  Окно в Европу  Терминал Утренний  среда, марта 09, 2022
-  ТАМБЕЙ  Arc 4  19  Окно в Европу  Терминал Утренний  среда, марта 16, 2022
-  ШТУРМАН АЛЬБАНОВ  Arc 7  19  Штокман  Дудинка  суббота, марта 26, 2022
-  НИКИФОР БЕГИЧЕВ  Arc 4  16  Новый порт  Окно в Европу  четверг, марта 10, 2022
-  НОРИЛЬСКИЙ НИКЕЛЬ  Arc 7  14  Мыс Желания  устье Лены  воскресенье, марта 13, 2022
-  АЙС ИГЛ  Arc 5  14  Новый порт  Штокман  четверг, марта 24, 2022
-  ШТУРМАН КОШЕЛЕВ  Arc 7  15  Пролив Лонга  Сабетта  пятница, марта 04, 2022
-  ШТУРМАН ЩЕРБИНИН  Arc 7  15  Победа месторождение  Окно в Европу  суббота, марта 19, 2022
-  ШТУРМАН СКУРАТОВ  Arc 7  15  Терминал Утренний  устье Лены  суббота, марта 19, 2022
-  ИОГАНН МАХМАСТАЛЬ  Arc 5  14  Новый порт  Окно в Европу  четверг, марта 17, 2022
-  BORIS SOKOLOV  Arc 7  14  Архангельск  Дудинка  четверг, марта 24, 2022
-  ИНЖЕНЕР ТРУБИН  Arc 5  12  устье Лены  Новый порт  вторник, марта 08, 2022
-  БАРЕНЦ  Arc 4  16  Восточно-Сибирское 1  Рейд Мурманска  воскресенье, марта 20, 2022
-  ПОЛАР КИНГ  Arc 5  16  Восточно-Сибирское 3  Архангельск  среда, марта 16, 2022
-  МЫС ДЕЖНЕВА  Arc 4  16  Победа месторождение  Дудинка  пятница, апреля 01, 2022
-  СЕВМОРПУТЬ  Arc 5  14  Штокман  Дудинка  пятница, апреля 08, 2022
-  ГРИГОРИЙ ШЕЛИХОВ  Arc 4  14  Новый порт  устье Лены  воскресенье, апреля 10, 2022
-  УРАРТУ  Arc 4  18  Архангельск  устье Лены  четверг, апреля 07, 2022
-  ФЕСКО ПАРИС  Arc 4  18  Терминал Утренний  Пролив Лонга  пятница, апреля 15, 2022
-  ПРОГРЕСС  Arc 4  18  Штокман  Терминал Утренний  суббота, апреля 16, 2022
-  МИХАИЛ БРИТНЕВ  Arc 4  18  Рейд Мурманска  Новый порт  суббота, апреля 16, 2022
-  САБЕТТА  Arc 4  16  Индига  Победа Месторождение  суббота, апреля 16, 2022
-  ГЕОРГИЙ УШАКОВ  Arc 4  16  Пролив Лонга  Штокман  среда, апреля 06, 2022
-  СЕВЕРНЫЙ ПРОЕКТ  Arc 4  16  Сабетта  Окно в Европу  среда, апреля 20, 2022
-  НИКОЛАЙ ЧУДОТВОРЕЦ  Нет  16  Сабетта  Окно в Европу  суббота, апреля 23, 2022
-  БЕРИНГ  Arc 4  16  Окно в Европу  Терминал Утренний  пятница, апреля 22, 2022
-  ТОЛБУХИН  Arc 4  16  Рейд Мурманска  Дудинка  суббота, апреля 23, 2022
-  ЯМАЛ КРЕЧЕТ  Arc 4  16  Штокман  Новый порт  понедельник, апреля 25, 2022
-  CLEAN VISION  Arc 4  14  Штокман  устье Лены  среда, апреля 27, 2022
-  YAMAL SPIRIT  Нет  14  Сабетта  Архангельск  среда, апреля 27, 2022
-  ТИКСИ  Arc 4  16  Новый порт  Окно в Европу  понедельник, апреля 25, 2022
-  ТАЙБОЛА  Arc 4  16  Рейд Мурманска  Новый порт  суббота, апреля 30, 2022`;
+export class ListShipsPageComponent {
+  uniqueId!: string;
 
-  shipsData: ShipData[] = [];
+  rawData = `0  73.1  80  Бухта Север и Диксон  1010
+  1  69.4  86.15  Дудинка  1007
+  2  69.9  44.6  кромка льда на Западе  2002
+  3  69.15  57.68  Варандей-Приразломное  1015
+  4  73  44  Штокман  1012
+  5  71.5  22  Окно в Европу  2001
+  6  74.6  63.9  Победа месторождение  1011
+  7  76.4  86.4  Карское - 3 (центр)  2008
+  8  77.6  107.7  пролив Вилькицкого - 3  2013
+  9  74.9  116.7  Лаптевых - 4 (юг)  2018
+  10  73.1  72.7  Вход в Обскую губу  2009
+  11  68.5  73.7  Новый порт  1004
+  12  76.75  116  Лаптевых - 1 (центр)  2015
+  13  74  76.7  Карское - 1 (сбор каравана)  2006
+  14  72.35  79.6  Лескинское м-е  1014
+  15  70.3  57.8  Карские ворота  2005
+  16  77.3  67.7  Мыс Желания  2003
+  17  71.74  184.7  остров Врангеля  2026
+  18  70.7  170.5  Восточно-Сибирское - 1 (восток)  2023
+  19  77.8  104.1  пролив Вилькицкого - восток  2012
+  20  77.7  99.5  пролив Вилькицкого - запад  2011
+  21  76.2  58.3  около Новой Земли  2004
+  22  74.4  139  Пролив Санникова - 1  2020
+  23  74.3  146.7  Пролив Санникова - 2  2021
+  24  74  128.1  устье Лены  2019
+  25  71.3  72.15  Сабетта  1003
+  26  69.1  169.4  мыс.Наглёйнын  1009
+  27  69.9  179  пролив Лонга  2027
+  28  73.5  169.9  Восточно-Сибирское - 3 (север)  2025
+  29  64.95  40.05  Архангельск  1002
+  30  75.9  152.6  Лаптевых - 3 (восток)  2017
+  31  68.37  54.6  МОТ Печора  1017
+  32  73.7  109.26  Хатангский залив  1008
+  33  72  159.5  Восточно-Сибирское - 2 (запад)  2024
+  34  72.4  65.6  Ленинградское-Русановское  1013
+  35  71  73.73  терминал Утренний  1005
+  36  76.5  97.6  Таймырский залив  2010
+  37  64.2  188.2  Берингово  2029
+  38  60.7  175.3  кромка льда на Востоке  2030
+  39  69.75  169.9  Рейд Певек  1006
+  40  75.5  131.5  Лаптевых - 2 (центр)  2016
+  41  69.5  33.75  Рейд Мурманска  1001
+  42  76.7  140.8  остров Котельный  2022
+  43  74.8  84.2  Карское - 2 (прибрежный)  2007
+  44  67.58  47.82  Индига  1016
+  45  65.9  -169.35  Берингов пролив  2028
+  46  55.7  164.25  Окно в Азию  2031`;
 
-  parseData(data: string): ShipData[] {
-    return data
-      .trim()
-      .split('\n')
-      .map((line) => {
-        const parts = line.match(
-          /(.*?)\s{2,}(Arc \d+|Нет)\s{2,}(\d{1,2})\s{2,}(.*?)\s{2,}(.*?)\s{2,}(.*)/
-        );
-        if (parts) {
-          const [, shipName, iceClass, speed, startPort, endPort, startDate] = parts;
-          return {
-            shipName,
-            iceClass,
-            speed: parseInt(speed, 10),
-            startPort,
-            endPort,
-            startDate,
-          };
-        }
-        throw new Error(`Невозможно запарсить строку: ${line}`);
+  parsedData: Point[] = [];
+  start: string = '';
+  finish: string = '';
+  routes: RouteModel = new RouteModel();
+
+  constructor(
+    private guidService: GuidGenerateService,
+    private routeService: PostRouteService
+  ) {
+    this.uniqueId = this.guidService.generateGuid();
+    this.parsedData = this.rawData.split('\n').map(this.parseData);
+  }
+
+  parseData = (line: string): Point => {
+    const parts = line.trim().split(/\s+/);
+    const pointName = parts.slice(3, -1).join(' ');
+    const repId = parseInt(parts[parts.length - 1], 10);
+    return {
+      id: uuidv4(),
+      latitude: parseFloat(parts[1].replace(',', '.')),
+      longitude: parseFloat(parts[2].replace(',', '.')),
+      pointName: pointName,
+      repId: repId,
+    };
+  };
+
+  public async postRoute(routes: RouteModel) {
+    let t = this;
+
+    await lastValueFrom(t.routeService.PostRoute(routes))
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.error('Ошибка при загрузке маршрута', e);
       });
   }
 
-  ngOnInit(): void {
-    this.shipsData = this.parseData(this.rawData);
-  }
+  sendRoute = (): void => {
+    let t = this;
+    const selectedStartPoint = t.parsedData.find(
+      (point) => point.id === t.start
+    );
+    const selectedEndPoint = t.parsedData.find(
+      (point) => point.id === t.finish
+    );
+
+    if (selectedStartPoint && selectedEndPoint) {
+      const route = {
+        id: uuidv4(),
+        start: selectedStartPoint,
+        startId: selectedStartPoint.id,
+        finish: selectedEndPoint,
+        finishId: selectedEndPoint.id,
+      };
+
+      t.routes = route;
+      t.start = '';
+      t.finish = '';
+      console.log('routes:', t.routes);
+      t.postRoute(t.routes);
+    }
+  };
 }
