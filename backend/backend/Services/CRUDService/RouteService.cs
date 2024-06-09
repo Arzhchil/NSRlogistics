@@ -2,6 +2,7 @@
 using backend.Data;
 using backend.Interfaces;
 using backend.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Services.CRUDService
 {
@@ -11,30 +12,36 @@ namespace backend.Services.CRUDService
         {
         }
 
-        public void Add(Models.Route newData)
+        public async Task<ActionResult<bool>> Add(Models.Route newData)
         {
             context.Add(newData);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
+
+            return true;
         }
 
-        public void Change(Guid id, Models.Route newData)
+        public async Task<ActionResult<bool>> Change(Guid id, Models.Route newData)
         {
             context.Routes.Update(newData);
+
+            return true;
         }
 
-        public void Delete(Guid id)
+        public async Task<ActionResult<bool>> Delete(Guid id)
         {
-            var route = Get(id);
+            var route = await Get(id);
             context.Routes.Remove(route);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
+
+            return true;
         }
 
-        public Models.Route Get(Guid id)
+        public async Task<Models.Route> Get(Guid id)
         {
-            return context.Routes.Find(id);
+            return await context.Routes.FindAsync(id);
         }
 
-        public ICollection<Models.Route> GetList()
+        public Task<ICollection<Models.Route>> GetList()
         {
             throw new NotImplementedException();
         }
