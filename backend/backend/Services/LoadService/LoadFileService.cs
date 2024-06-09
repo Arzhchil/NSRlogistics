@@ -34,9 +34,18 @@ namespace backend.Services.LoadService
             }
 
             // путь к файлу
-            string filePath = StaticData.FilePath + formFile.FileName;
+            string filePath = StaticData.FilePath/* + formFile.FileName*/;
 
-            using (FileStream fileStream = new FileStream(_appEnvironment.WebRootPath + filePath, FileMode.Create))
+            var path = Path.Combine(_appEnvironment.WebRootPath + filePath);
+
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+
+            if (!dirInfo.Exists)
+            {
+                dirInfo.Create();
+            }
+
+            using (FileStream fileStream = new FileStream(Path.Combine(path, formFile.FileName), FileMode.Create))
             {
                 // копируем файл в папку Files
                 await formFile.CopyToAsync(fileStream);
@@ -45,7 +54,7 @@ namespace backend.Services.LoadService
             Models.File file = new Models.File()
             {
                 FileName = Path.GetFileNameWithoutExtension(formFile.FileName),
-                FilePath = filePath,
+                FilePath = Path.Combine(filePath, formFile.FileName),
                 NameExtension = formFile.FileName
             };
 
