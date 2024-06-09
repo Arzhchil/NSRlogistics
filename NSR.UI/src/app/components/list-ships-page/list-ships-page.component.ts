@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShipData } from 'src/app/shared/models';
 import { GuidGenerateService, PostRouteService } from 'src/app/shared/services';
-import { Point, RouteModel } from 'src/app/shared/models';
+import { Point, RouteModel, } from 'src/app/shared/models';
 import { v4 as uuidv4 } from 'uuid';
 import { lastValueFrom } from 'rxjs';
 
