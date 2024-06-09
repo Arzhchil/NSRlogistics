@@ -4,6 +4,6 @@ namespace backend.Interfaces
 {
     public interface IFileUpload
     {
-        public Task<int> UploadFile(IFormFile formFile);
+        public Task<Guid> UploadFile(IFormFile formFile);
     }
 }

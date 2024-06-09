@@ -25,12 +25,12 @@ namespace backend.Services.LoadService
         /// <param name="formFile"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<int> UploadFile(IFormFile formFile)
+        public async Task<Guid> UploadFile(IFormFile formFile)
         {
             // bad request
             if (!IsValidFile(formFile))
             {
-                return 0;
+                throw new Exception("Некорректный тип файла");
             }
 
             // путь к файлу
@@ -53,7 +53,7 @@ namespace backend.Services.LoadService
             context.File.Add(file);
             await context.SaveChangesAsync();
 
-            int response = context.File.FirstOrDefault(x => x.NameExtension == formFile.FileName).Id;
+            Guid response = context.File.FirstOrDefault(x => x.NameExtension == formFile.FileName).Id;
             return response;
         }
 

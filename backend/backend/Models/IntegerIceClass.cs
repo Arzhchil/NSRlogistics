@@ -1,21 +1,18 @@
 ﻿namespace backend.Models
 {
-    /// <summary>
-    /// Тип корабля
-    /// </summary>
-    public class ShipClass
+    public class IntegerIceClass
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
-        /// Тип корабля
+        /// минимальная скорость
         /// </summary>
-        public string ShipType { get; set; } = null!;
-            
+        public int MinSpeed { get; set; }
+
         /// <summary>
-        /// Отношение к кораблю
+        /// максимальная скорость
         /// </summary>
-        public List<Ship> Ship { get; set; } = null!;
+        public int MaxSpeed { get; set; }
         public List<ShipClassIntegerClass> ShipClassIntegerClasses { get; set; } = new List<ShipClassIntegerClass>();
     }
 }

@@ -8,7 +8,7 @@
     /// <param name="filePath"></param>
     public class File
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// Имя файла без расширения

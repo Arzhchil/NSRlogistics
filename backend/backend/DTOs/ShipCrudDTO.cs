@@ -1,12 +1,10 @@
-﻿namespace backend.Models
-{
-    /// <summary>
-    /// Параметры корабля
-    /// </summary>
-    public class Ship
-    {
-        public Guid Id { get; set; } = Guid.NewGuid();
+﻿using backend.Models;
+using System.Text.Json.Serialization;
 
+namespace backend.DTOs
+{
+    public class ShipCrudDTO
+    {
         /// <summary>
         /// Имя корабля
         /// </summary>
@@ -15,7 +13,8 @@
         /// <summary>
         /// Отношение к классу корабля
         /// </summary>
-        public ShipClass ShipClass { get; set; } = null!;
+        [JsonIgnore]
+        public ShipClass? ShipClass { get; set; }
 
         /// <summary>
         /// Скорость
@@ -28,6 +27,6 @@
         /// <value>
         /// The ship class identifier.
         /// </value>
-        public Guid ShipClassId { get; set; }
+        public Guid ShipClassId { get; set; } = Guid.Empty;
     }
 }
