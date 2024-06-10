@@ -285,45 +285,45 @@ namespace backend.Data
                 );
 
             modelBuilder.Entity<ShipClassIntegerClass>().HasData(
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[0].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[0].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[0].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[0].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue =  1},
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[0].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[0].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 0 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[1].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[1].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[1].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[1].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[1].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[1].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 0 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[2].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[2].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[2].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[2].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[2].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[2].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 0 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[3].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[3].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[3].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[3].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[3].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[3].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = false, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 0 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[4].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[4].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[4].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[4].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[4].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8, DebuffHelpValue = 0.8 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[4].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7, DebuffHelpValue = 0.8 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[5].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[5].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[5].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[5].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[5].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8, DebuffHelpValue = 0.8 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[5].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7, DebuffHelpValue = 0.8 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[6].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[6].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[6].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[6].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[6].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.8, DebuffHelpValue = 0.8 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[6].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.7, DebuffHelpValue = 0.8 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[7].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[7].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.6 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[7].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.15 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[7].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[7].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.6, DebuffHelpValue = 0.8 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[7].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = false, IsCanHelpMove = true, DebuffValue = 0.15, DebuffHelpValue = 0.8 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[8].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[8].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[8].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[8].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[8].Id, IntegerIceClassId = scic[1].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[8].Id, IntegerIceClassId = scic[2].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
 
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[9].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[9].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 0.9 },
-                new ShipClassIntegerClass() { ShipClassId = shipClasses[9].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 0.75 }
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[9].Id, IntegerIceClassId = scic[0].Id, Debuff = false, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 1, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[9].Id, IntegerIceClassId = scic[1].Id, Debuff = true, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 0.9, DebuffHelpValue = 1 },
+                new ShipClassIntegerClass() { ShipClassId = shipClasses[9].Id, IntegerIceClassId = scic[2].Id, Debuff = true, IsCanSoloMove = true, IsCanHelpMove = false, DebuffValue = 0.75, DebuffHelpValue = 1 }
             );
         }
 
@@ -333,7 +333,6 @@ namespace backend.Data
         public DbSet<ShipClass> ShipClass { get; set; } = null!;
         public DbSet<IntegerIceClass> IntegerIceClass { get; set; } = null!;
         public DbSet<ShipClassIntegerClass> ShipClassIntegerClass { get; set; } = null!;
-
         public DbSet<Models.Route> Routes { get; set; } = null!;
     }
 }
