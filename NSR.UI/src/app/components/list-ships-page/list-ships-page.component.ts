@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GuidGenerateService, PostRouteService } from 'src/app/shared/services';
-import { Point, RouteModel, } from 'src/app/shared/models';
+import { GuidGenerateService, PostRouteService, PostShipService } from 'src/app/shared/services';
+import { Point, RouteModel, ShipModel } from 'src/app/shared/models';
 import { v4 as uuidv4 } from 'uuid';
 import { lastValueFrom } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { lastValueFrom } from 'rxjs';
 export class ListShipsPageComponent {
   uniqueId!: string;
 
-  rawData = `0  73.1  80  Бухта Север и Диксон  1010
+  rawPointsData = `0  73.1  80  Бухта Север и Диксон  1010
   1  69.4  86.15  Дудинка  1007
   2  69.9  44.6  кромка льда на Западе  2002
   3  69.15  57.68  Варандей-Приразломное  1015
@@ -60,20 +60,71 @@ export class ListShipsPageComponent {
   45  65.9  -169.35  Берингов пролив  2028
   46  55.7  164.25  Окно в Азию  2031`;
 
-  parsedData: Point[] = [];
+  rawShipsData = `ДЮК II  Arc 5  15
+  САРМАТ  Arc 4  15
+  EDUARD TOLL  Arc 7  15
+  GEORGIY USHAKOV  Arc 7  15
+  RUDOLF SAMOYLOVICH  Arc 7  15
+  VLADIMIR VORONIN  Arc 7  15
+  NIKOLAY YEVGENOV  Arc 7  14
+  CHRISTOPHE DE MARGERIE  Arc 7  14
+  BORIS VILKITSKY  Arc 7  19
+  АРКТИКА-2  Arc 5  19
+  ИНЖЕНЕР ВЕШНЯКОВ  Arc 5  19
+  ТАМБЕЙ  Arc 4  19
+  ШТУРМАН АЛЬБАНОВ  Arc 7  19
+  НИКИФОР БЕГИЧЕВ  Arc 4  16
+  НОРИЛЬСКИЙ НИКЕЛЬ  Arc 7  14
+  АЙС ИГЛ  Arc 5  14
+  ШТУРМАН КОШЕЛЕВ  Arc 7  15
+  ШТУРМАН ЩЕРБИНИН  Arc 7  15
+  ШТУРМАН СКУРАТОВ  Arc 7  15
+  ИОГАНН МАХМАСТАЛЬ  Arc 5  14
+  BORIS SOKOLOV  Arc 7  14
+  ИНЖЕНЕР ТРУБИН  Arc 5  12
+  БАРЕНЦ  Arc 4  16
+  ПОЛАР КИНГ  Arc 5  16
+  МЫС ДЕЖНЕВА  Arc 4  16
+  СЕВМОРПУТЬ  Arc 5  14
+  ГРИГОРИЙ ШЕЛИХОВ  Arc 4  14
+  УРАРТУ  Arc 4  18
+  ФЕСКО ПАРИС  Arc 4  18
+  ПРОГРЕСС  Arc 4  18
+  МИХАИЛ БРИТНЕВ  Arc 4  18
+  САБЕТТА  Arc 4  16
+  ГЕОРГИЙ УШАКОВ  Arc 4  16
+  СЕВЕРНЫЙ ПРОЕКТ  Arc 4  16
+  НИКОЛАЙ ЧУДОТВОРЕЦ  Нет  16
+  БЕРИНГ  Arc 4  16
+  ТОЛБУХИН  Arc 4  16
+  ЯМАЛ КРЕЧЕТ  Arc 4  16
+  CLEAN VISION  Arc 4  14
+  YAMAL SPIRIT  Нет  14
+  ТИКСИ  Arc 4  16
+  ТАЙБОЛА  Arc 4  16`;
+
+  parsedPointData: Point[] = [];
   start: string = '';
   finish: string = '';
   routes: RouteModel = new RouteModel();
 
+  ship: string = '';
+  parsedShipsData: ShipModel[] = [];
+  selectedShip: ShipModel = new ShipModel
+
   constructor(
     private guidService: GuidGenerateService,
-    private routeService: PostRouteService
+    private routeService: PostRouteService,
+    private shipService: PostShipService,
   ) {
     this.uniqueId = this.guidService.generateGuid();
-    this.parsedData = this.rawData.split('\n').map(this.parseData);
+    this.parsedPointData = this.rawPointsData
+      .split('\n')
+      .map(this.parsePointData);
+    this.parsedShipsData = this.parseShipData(this.rawShipsData);
   }
 
-  parseData = (line: string): Point => {
+  parsePointData = (line: string): Point => {
     const parts = line.trim().split(/\s+/);
     const pointName = parts.slice(3, -1).join(' ');
     const repId = parseInt(parts[parts.length - 1], 10);
@@ -85,6 +136,27 @@ export class ListShipsPageComponent {
       repId: repId,
     };
   };
+
+  //Переделать парсер (убрать класс корабля)
+  parseShipData(data: string): ShipModel[] {
+    const lines = data.split('\n');
+    const ships: ShipModel[] = [];
+
+    for (const line of lines) {
+      const parts = line.trim().split(/\s{2,}/);
+      if (parts.length === 3) {
+        const [shipName, shipClassId, speedStr] = parts;
+        const speed = parseInt(speedStr, 10);
+        ships.push({
+          shipName,
+          speed,
+          shipClassId,
+        });
+      }
+    }
+
+    return ships;
+  }
 
   public async postRoute(routes: RouteModel) {
     let t = this;
@@ -98,16 +170,31 @@ export class ListShipsPageComponent {
       });
   }
 
+  public async postShip(ship: ShipModel) {
+    let t = this;
+
+    await lastValueFrom(t.shipService.PostShip(ship))
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.error('Ошибка при загрузке маршрута', e);
+      });
+  }
+
   sendRoute = (): void => {
     let t = this;
-    const selectedStartPoint = t.parsedData.find(
+    const selectedStartPoint = t.parsedPointData.find(
       (point) => point.id === t.start
     );
-    const selectedEndPoint = t.parsedData.find(
+    const selectedEndPoint = t.parsedPointData.find(
       (point) => point.id === t.finish
     );
+    const selectedShip = t.parsedShipsData.find(
+      (ship) => ship.shipName === t.ship
+    );
 
-    if (selectedStartPoint && selectedEndPoint) {
+    if (selectedStartPoint && selectedEndPoint && selectedShip) {
       const route = {
         id: uuidv4(),
         start: selectedStartPoint,
@@ -115,12 +202,21 @@ export class ListShipsPageComponent {
         finish: selectedEndPoint,
         finishId: selectedEndPoint.id,
       };
+      const currentShip = {
+        shipName: selectedShip.shipName,
+        speed: selectedShip.speed,
+        shipClassId: selectedShip.shipClassId,
+      }
 
       t.routes = route;
+      t.selectedShip = currentShip;
       t.start = '';
       t.finish = '';
+
       console.log('routes:', t.routes);
-      t.postRoute(t.routes);
+      console.log('currentShip:', t.selectedShip);
+      //t.postRoute(t.routes);
+      t.postShip(t.selectedShip) //Status 400, Спросить у Сереге про класс и айдишник
     }
   };
 }
