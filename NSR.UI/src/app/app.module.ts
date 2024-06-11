@@ -9,11 +9,11 @@ import { FileDropzonePageComponent } from './components/file-dropzone-page/file-
 import { ListShipsPageComponent } from './components/list-ships-page/list-ships-page.component';
 import { GanttChartPageComponent } from './components/gantt-chart-page/gantt-chart-page.component';
 import { MainComponent } from './components/main/main.component';
-import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { DropzoneComponent } from './shared/components/dropzone/dropzone.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TestingPageComponent } from './components/testing-page/testing-page.component';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,9 @@ import { FormsModule } from '@angular/forms';
     ListShipsPageComponent,
     GanttChartPageComponent,
     MainComponent,
-    NavigationComponent,
     DropzoneComponent,
-    TestingPageComponent
+    TestingPageComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +33,9 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     LeafletModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

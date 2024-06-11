@@ -29,10 +29,21 @@
   <h1>Составьте маршрут</h1>
   <div>
     <label>
+      Корабль
+      <select class="form-select" [(ngModel)]="ship">
+        <option selected value="">Выбрать корабль</option>
+        <option *ngFor="let sh of parsedShipsData">
+          {{ sh.shipName }}
+        </option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>
       Точку Отправления
       <select class="form-select" [(ngModel)]="start">
         <option selected value="">Выбрать точку отправления</option>
-        <option *ngFor="let point of parsedData" [value]="point.id" [disabled]="point.id === finish">
+        <option *ngFor="let point of PointData" [value]="point.id" [disabled]="point.id === finish">
           {{ point.pointName }}
         </option>
       </select>
@@ -43,7 +54,7 @@
       Точку Прибытия:
       <select class="form-select" [(ngModel)]="finish">
         <option selected value="">Выбрать точку прибытия</option>
-        <option *ngFor="let point of parsedData" [value]="point.id" [disabled]="point.id === start">
+        <option *ngFor="let point of PointData" [value]="point.id" [disabled]="point.id === start">
           {{ point.pointName }}
         </option>
       </select>

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { GuidGenerateService, PostRouteService } from 'src/app/shared/services';
-import { Point, RouteModel, } from 'src/app/shared/models';
+import {
+  GuidGenerateService,
+  PostRouteService,
+  PostShipService,
+  GetShipService,
+} from 'src/app/shared/services';
+import { Point, RouteModel, ShipModel } from 'src/app/shared/models';
 import { v4 as uuidv4 } from 'uuid';
 import { lastValueFrom } from 'rxjs';
 
@@ -9,10 +14,10 @@ import { lastValueFrom } from 'rxjs';
   templateUrl: './list-ships-page.component.html',
   styleUrls: ['./list-ships-page.component.scss'],
 })
-export class ListShipsPageComponent {
+export class ListShipsPageComponent implements OnInit {
   uniqueId!: string;
 
-  rawData = `0  73.1  80  Бухта Север и Диксон  1010
+  rawPointsData = `0  73.1  80  Бухта Север и Диксон  1010
   1  69.4  86.15  Дудинка  1007
   2  69.9  44.6  кромка льда на Западе  2002
   3  69.15  57.68  Варандей-Приразломное  1015
@@ -60,20 +65,40 @@ export class ListShipsPageComponent {
   45  65.9  -169.35  Берингов пролив  2028
   46  55.7  164.25  Окно в Азию  2031`;
 
-  parsedData: Point[] = [];
+  PointData: Point[] = [];
   start: string = '';
   finish: string = '';
   routes: RouteModel = new RouteModel();
 
+  ship: string = '';
+  parsedShipsData: ShipModel[] = [];
+  selectedShip: ShipModel = new ShipModel();
+
   constructor(
     private guidService: GuidGenerateService,
-    private routeService: PostRouteService
+    private routeService: PostRouteService,
+    private shipService: PostShipService,
+    private getShipService: GetShipService
   ) {
     this.uniqueId = this.guidService.generateGuid();
-    this.parsedData = this.rawData.split('\n').map(this.parseData);
+    this.PointData = this.rawPointsData
+      .split('\n')
+      .map(this.parsePointData);
   }
 
-  parseData = (line: string): Point => {
+  ngOnInit(): void {
+    this.getShipService.getShips().subscribe({
+      next: (ships: ShipModel[]) => {
+        this.parsedShipsData = ships;
+        console.log(this.parsedShipsData) //убрать
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
+  parsePointData = (line: string): Point => {
     const parts = line.trim().split(/\s+/);
     const pointName = parts.slice(3, -1).join(' ');
     const repId = parseInt(parts[parts.length - 1], 10);
@@ -91,7 +116,19 @@ export class ListShipsPageComponent {
 
     await lastValueFrom(t.routeService.PostRoute(routes))
       .then((res) => {
-        console.log(res);
+        console.log(res); //убрать
+      })
+      .catch((e) => {
+        console.error('Ошибка при загрузке маршрута', e);
+      });
+  }
+
+  public async postShip(ship: ShipModel) {
+    let t = this;
+
+    await lastValueFrom(t.shipService.PostShip(ship))
+      .then((res) => {
+        console.log(res); //убрать
       })
       .catch((e) => {
         console.error('Ошибка при загрузке маршрута', e);
@@ -100,14 +137,17 @@ export class ListShipsPageComponent {
 
   sendRoute = (): void => {
     let t = this;
-    const selectedStartPoint = t.parsedData.find(
+    const selectedStartPoint = t.PointData.find(
       (point) => point.id === t.start
     );
-    const selectedEndPoint = t.parsedData.find(
+    const selectedEndPoint = t.PointData.find(
       (point) => point.id === t.finish
     );
+    const selectedShip = t.parsedShipsData.find(
+      (ship) => ship.shipName === t.ship
+    );
 
-    if (selectedStartPoint && selectedEndPoint) {
+    if (selectedStartPoint && selectedEndPoint && selectedShip) {
       const route = {
         id: uuidv4(),
         start: selectedStartPoint,
@@ -115,12 +155,21 @@ export class ListShipsPageComponent {
         finish: selectedEndPoint,
         finishId: selectedEndPoint.id,
       };
+      const currentShip = {
+        shipName: selectedShip.shipName,
+        speed: selectedShip.speed,
+        shipClassId: selectedShip.shipClassId,
+      };
 
       t.routes = route;
+      t.selectedShip = currentShip;
       t.start = '';
       t.finish = '';
-      console.log('routes:', t.routes);
-      t.postRoute(t.routes);
+
+      console.log('routes:', t.routes); //убрать
+      console.log('currentShip:', t.selectedShip); //убрать
+      //t.postRoute(t.routes);
+      //t.postShip(t.selectedShip);
     }
   };
 }

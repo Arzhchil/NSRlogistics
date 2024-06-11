@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <aside id="sidebar">
+    <div class="d-flex">
+      <button (click)="hamburderClick()" class="toggle-btn" type="button">
+        <i class="lni lni-grid-alt"></i>
+      </button>
+      <div class="sidebar-logo">
+        <a>Task17</a>
+      </div>
+    </div>
+    <ul class="sidebar-nav">
+      <li class="sidebar-item">
+        <a (click)="navigateTo('ships')" class="sidebar-link">
+          <i class="lni lni-ship"></i>
+          <span>Ships</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a (click)="navigateTo('main')" class="sidebar-link">
+          <i class="lni lni-map"></i>
+          <span>Map</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a (click)="navigateTo('upload')" class="sidebar-link">
+          <i class="lni lni-upload"></i>
+          <span>Upload</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a (click)="navigateTo('gantt')" class="sidebar-link">
+          <i class="lni lni-bar-chart"></i>
+          <span>Gantt</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a (click)="navigateTo('test')" class="sidebar-link">
+          <i class="lni lni-game"></i>
+          <span>Testing</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <!--<div class="main p-3">
+    <div class="text-center">
+      <h1>Sidebar Bootstrap 5</h1>
+    </div>
+  </div>-->
+</div>
