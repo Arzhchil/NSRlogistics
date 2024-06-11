@@ -3,6 +3,7 @@ using backend.Data;
 using backend.Interfaces;
 using backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Services.CRUDService
 {
@@ -41,9 +42,9 @@ namespace backend.Services.CRUDService
             return await context.Routes.FindAsync(id);
         }
 
-        public Task<ICollection<Models.Route>> GetList()
+        public async Task<ICollection<Models.Route>> GetList()
         {
-            throw new NotImplementedException();
+            return await context.Routes.ToListAsync();
         }
     }
     
