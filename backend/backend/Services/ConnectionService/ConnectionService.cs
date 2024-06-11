@@ -19,6 +19,7 @@ namespace backend.Services.ConnectionService
             builder.Services.AddScoped<IFileParser, ParseFileService>();
             builder.Services.AddScoped<ICRUD<Models.Route>, RouteService>();
             builder.Services.AddScoped<ICRUD<ShipCrudDTO>, ShipService>();
+            builder.Services.AddScoped<ICRUD<GraphDataDTO>, GraphDataService>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
         }
     }

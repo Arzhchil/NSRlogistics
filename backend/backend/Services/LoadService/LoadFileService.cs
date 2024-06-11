@@ -34,7 +34,7 @@ namespace backend.Services.LoadService
             }
 
             // путь к файлу
-            string filePath = StaticData.FilePath/* + formFile.FileName*/;
+            string filePath = StaticData.FilePath;
 
             var path = Path.Combine(_appEnvironment.WebRootPath + filePath);
 
