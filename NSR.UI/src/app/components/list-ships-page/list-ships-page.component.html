@@ -43,7 +43,7 @@
       Точку Отправления
       <select class="form-select" [(ngModel)]="start">
         <option selected value="">Выбрать точку отправления</option>
-        <option *ngFor="let point of parsedPointData" [value]="point.id" [disabled]="point.id === finish">
+        <option *ngFor="let point of PointData" [value]="point.id" [disabled]="point.id === finish">
           {{ point.pointName }}
         </option>
       </select>
@@ -54,7 +54,7 @@
       Точку Прибытия:
       <select class="form-select" [(ngModel)]="finish">
         <option selected value="">Выбрать точку прибытия</option>
-        <option *ngFor="let point of parsedPointData" [value]="point.id" [disabled]="point.id === start">
+        <option *ngFor="let point of PointData" [value]="point.id" [disabled]="point.id === start">
           {{ point.pointName }}
         </option>
       </select>
