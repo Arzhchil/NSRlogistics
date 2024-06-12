@@ -1,4 +1,3 @@
-//Переделать
 export class ShipModel {
   shipName!: string;
   speed!: number;

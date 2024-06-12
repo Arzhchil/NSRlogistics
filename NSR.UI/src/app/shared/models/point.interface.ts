@@ -1,7 +1,12 @@
+//export interface Point {
+//  id: string;
+//  latitude: number;
+//  longitude: number;
+//  pointName: string;
+//  repId: number;
+//}
+
 export interface Point {
-  id: string;
-  latitude: number;
-  longitude: number;
+  graphDataId: string;
   pointName: string;
-  repId: number;
 }
