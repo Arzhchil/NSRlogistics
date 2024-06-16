@@ -1,30 +1,3 @@
-<!--<table class="ship-table">
-  <thead>
-    <tr>
-      <th>Название судна</th>
-      <th>Ледовый класс</th>
-      <th>Скорость</th>
-      <th>Порт отправления</th>
-      <th>Порт назначения</th>
-      <th>Дата отправления</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let ship of shipsData">
-      <td>{{ ship.shipName }}</td>
-      <td>{{ ship.iceClass }}</td>
-      <td>{{ ship.speed }}</td>
-      <td>{{ ship.startPort }}</td>
-      <td>{{ ship.endPort }}</td>
-      <td>{{ ship.startDate }}</td>
-    </tr>
-  </tbody>
-</table>-->
-<!--^
-    |
-    |
-    Я эт потом уберу -->
-
 <div class="route">
   <h1>Составьте маршрут</h1>
   <div>
@@ -43,7 +16,11 @@
       Точку Отправления
       <select class="form-select" [(ngModel)]="start">
         <option selected value="">Выбрать точку отправления</option>
-        <option *ngFor="let point of PointData" [value]="point.id" [disabled]="point.id === finish">
+        <option
+          *ngFor="let point of PointData"
+          [value]="point.graphDataId"
+          [disabled]="point.graphDataId === finish"
+        >
           {{ point.pointName }}
         </option>
       </select>
@@ -54,12 +31,17 @@
       Точку Прибытия:
       <select class="form-select" [(ngModel)]="finish">
         <option selected value="">Выбрать точку прибытия</option>
-        <option *ngFor="let point of PointData" [value]="point.id" [disabled]="point.id === start">
+        <option
+          *ngFor="let point of PointData"
+          [value]="point.graphDataId"
+          [disabled]="point.graphDataId === start"
+        >
           {{ point.pointName }}
         </option>
       </select>
     </label>
   </div>
-  <button class="btn btn-primary" (click)="sendRoute()">Загрузить маршрут</button>
+  <button class="btn btn-primary" (click)="sendRoute()">
+    Загрузить маршрут
+  </button>
 </div>
-

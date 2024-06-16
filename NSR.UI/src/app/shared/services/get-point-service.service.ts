@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroments';
-import { ShipModel } from '../models';
+import { Point } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetShipService {
+export class GetPointService {
   errorMessage: String = 'HttpError';
-  private url = '/api/Ship';
+  private url = '/api/GraphData';
   constructor(private http: HttpClient) {}
 
-  getShips(): Observable<ShipModel[]> {
-    return this.http.get<ShipModel[]>(environment.apiUrl + this.url);
+  getPoints(): Observable<Point[]> {
+    return this.http.get<Point[]>(environment.apiUrl + this.url);
   }
 }

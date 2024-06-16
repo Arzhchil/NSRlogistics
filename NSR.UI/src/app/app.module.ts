@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestingPageComponent } from './components/testing-page/testing-page.component';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { GanttChartComponent } from './shared/components/gantt-chart/gantt-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     DropzoneComponent,
     TestingPageComponent,
     SidebarComponent,
+    GanttChartComponent,
   ],
   imports: [
     BrowserModule,
