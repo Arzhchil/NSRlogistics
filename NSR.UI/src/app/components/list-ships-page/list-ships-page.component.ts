@@ -52,19 +52,6 @@ export class ListShipsPageComponent implements OnInit {
     });
   }
 
-  //parsePointData = (line: string): Point => {
-  //  const parts = line.trim().split(/\s+/);
-  //  const pointName = parts.slice(3, -1).join(' ');
-  //  const repId = parseInt(parts[parts.length - 1], 10);
-  //  return {
-  //    id: uuidv4(),
-  //    latitude: parseFloat(parts[1].replace(',', '.')),
-  //    longitude: parseFloat(parts[2].replace(',', '.')),
-  //    pointName: pointName,
-  //    repId: repId,
-  //  };
-  //};
-
   public async postRoute(routes: RouteModel) {
     let t = this;
 
@@ -104,9 +91,7 @@ export class ListShipsPageComponent implements OnInit {
     if (selectedStartPoint && selectedEndPoint && selectedShip) {
       const route = {
         id: uuidv4(),
-        //start: selectedStartPoint,
         startId: selectedStartPoint.graphDataId,
-        //finish: selectedEndPoint,
         finishId: selectedEndPoint.graphDataId,
       };
       const currentShip = {

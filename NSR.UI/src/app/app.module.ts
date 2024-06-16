@@ -11,7 +11,6 @@ import { GanttChartPageComponent } from './components/gantt-chart-page/gantt-cha
 import { MainComponent } from './components/main/main.component';
 import { DropzoneComponent } from './shared/components/dropzone/dropzone.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TestingPageComponent } from './components/testing-page/testing-page.component';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { GanttChartComponent } from './shared/components/gantt-chart/gantt-chart.component';
@@ -25,7 +24,6 @@ import { GanttChartComponent } from './shared/components/gantt-chart/gantt-chart
     GanttChartPageComponent,
     MainComponent,
     DropzoneComponent,
-    TestingPageComponent,
     SidebarComponent,
     GanttChartComponent,
   ],
