@@ -1,4 +1,6 @@
 export class PointMap {
-  public x!: number;
-  public y!: number;
+  public graphDataId!: string;
+  public pointName!: string;
+  public longitude!: number;
+  public latitude!: number;
 }

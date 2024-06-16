@@ -34,7 +34,6 @@ export class DropzoneComponent {
 
       if (this.isValidFile(droppedFile)) {
         this.file = droppedFile;
-        console.log(this.file); //Затычка, потом убрать
         this.uploadFile(this.file);
       } else {
         alert('Неверный тип файла. Разрешены только файлы .xlsx');
@@ -52,7 +51,6 @@ export class DropzoneComponent {
 
       if (this.isValidFile(selectedFile)) {
         this.file = selectedFile;
-        console.log(this.file); //Затычка, потом убрать
         this.uploadFile(this.file);
       } else {
         alert('Неверный тип файла. Разрешены только файлы .xlsx');
