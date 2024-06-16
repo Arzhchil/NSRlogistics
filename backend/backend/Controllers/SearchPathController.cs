@@ -1,21 +1,23 @@
-﻿using backend.Data;
+﻿using Aspose.Cells;
+using backend.Data;
 using backend.DTOs;
 using backend.Interfaces;
 using backend.Services.FindPathService;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace backend.Controllers
 {
-    /// <summary>
-    /// НУЖЕН ТОЛЬКО ДЛЯ ТЕСТОВ ПАРСИНГА
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class ParseDataController : ControllerBase
+    public class SearchPathController : ControllerBase
     {
         private readonly IFileParser _fileParser;
         private readonly DataContext dataContext;
-        public ParseDataController(IFileParser fileParser, DataContext context)
+        public SearchPathController(IFileParser fileParser, DataContext context)
         {
             _fileParser = fileParser;
             dataContext = context;
@@ -25,8 +27,8 @@ namespace backend.Controllers
         /// парсинг файла(нужен для тестов, так то нахуй не сдался)
         /// </summary>
         /// <returns></returns>
-        [HttpPost("/parseData")]
-        public async Task<ActionResult<List<Point>>> LoadFile([FromBody] ParserDTO parserDTO)
+        [HttpPost("/searchPath")]
+        public async Task<ActionResult<List<Point>>> SearchPath([FromBody] ParserDTO parserDTO)
         {
             double[,] parseData = await _fileParser.FileParser(parserDTO);
             double[][] doubles = new double[parseData.GetLength(0)][];

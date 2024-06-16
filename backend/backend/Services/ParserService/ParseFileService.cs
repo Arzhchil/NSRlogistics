@@ -13,9 +13,9 @@ namespace backend.Services.Parser
         {
         }
 
-        public async Task<int[,]> FileParser(ParserDTO parser)
+        public async Task<double[,]> FileParser(ParserDTO parser)
         {
-            int[,] parseData;
+            double[,] parseData;
 
             // получение файла из бд
             Models.File file = context.File.FirstOrDefault(x => x.Id == parser.FileId);
@@ -32,14 +32,14 @@ namespace backend.Services.Parser
                 // лочим файл, с которым работаем
                 using (FileLock fileLock = new FileLock(file.FilePath))
                 {
-                    Worksheet worksheet = wb.Worksheets[0];
+                    Worksheet worksheet = wb.Worksheets[parser.WorkBookSheet];
 
                     parseData = await ParseData(worksheet);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw;
             }
 
             return parseData;
@@ -51,11 +51,11 @@ namespace backend.Services.Parser
         /// <param name="sheet"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        private async Task<int[,]> ParseData(Worksheet sheet)
+        private async Task<double[,]> ParseData(Worksheet sheet)
         {
-            int[,] data = new int[269, 269];
-            int rows = sheet.Cells.MaxDataRow;
-            int cols = sheet.Cells.MaxDataColumn;
+            double[,] data = new double[sheet.Cells.MaxDataRow, sheet.Cells.MaxDataColumn];
+            double rows = sheet.Cells.MaxDataRow;
+            double cols = sheet.Cells.MaxDataColumn;
 
             // каждая строка
             for (int i = 0; i < rows; i++)
@@ -63,7 +63,7 @@ namespace backend.Services.Parser
                 // каждый столбец
                 for (int j = 0; j < cols; j++)
                 {
-                    data[i, j] = (int)sheet.Cells[i, j].Value;
+                    data[i, j] = sheet.Cells[i, j].DoubleValue;
                 }
             }
 
