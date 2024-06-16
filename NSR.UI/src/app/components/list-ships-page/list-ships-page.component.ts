@@ -35,7 +35,6 @@ export class ListShipsPageComponent implements OnInit {
     this.getPointService.getPoints().subscribe({
       next: (points: Point[]) => {
         this.PointData = points;
-        console.log(this.PointData); //убрать
       },
       error: (error) => {
         console.error(error);
@@ -44,7 +43,6 @@ export class ListShipsPageComponent implements OnInit {
     this.getShipService.getShips().subscribe({
       next: (ships: ShipModel[]) => {
         this.parsedShipsData = ships;
-        console.log(this.parsedShipsData); //убрать
       },
       error: (error) => {
         console.error(error);
@@ -57,7 +55,6 @@ export class ListShipsPageComponent implements OnInit {
 
     await lastValueFrom(t.routeService.PostRoute(routes))
       .then((res) => {
-        console.log(res); //убрать
       })
       .catch((e) => {
         console.error('Ошибка при загрузке маршрута', e);
@@ -69,7 +66,6 @@ export class ListShipsPageComponent implements OnInit {
 
     await lastValueFrom(t.shipService.PostShip(ship))
       .then((res) => {
-        console.log(res); //убрать
       })
       .catch((e) => {
         console.error('Ошибка при загрузке маршрута', e);
@@ -105,8 +101,6 @@ export class ListShipsPageComponent implements OnInit {
       t.start = '';
       t.finish = '';
 
-      console.log('routes:', t.routes); //убрать
-      console.log('currentShip:', t.selectedShip); //убрать
       t.postRoute(t.routes);
       t.postShip(t.selectedShip);
     }
