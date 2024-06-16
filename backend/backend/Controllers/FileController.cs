@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.DTOs;
 using backend.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -10,9 +11,11 @@ namespace backend.Controllers
     public class FileController : ControllerBase
     {
         private readonly IFileUpload _fileUpload;
-        public FileController(IFileUpload fileUpload)
+        private readonly IFindPoints _findPoints;
+        public FileController(IFileUpload fileUpload, IFindPoints findPoints)
         {
             _fileUpload = fileUpload;
+            _findPoints = findPoints;
         }
 
         /// <summary>
@@ -27,6 +30,28 @@ namespace backend.Controllers
             if (!string.IsNullOrEmpty(uploadedFileId.ToString()))
             {
                 return Ok(uploadedFileId);
+            }
+
+            return BadRequest("Не удалось загрузить файл на сервер");
+        }
+
+        /// <summary>
+        /// сохранение файла на сервер
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("/getPoints")]
+        public async Task<IActionResult> GetPoints(Guid StartId, Guid FinishId, Guid FileLongId, Guid FileLatId)
+        {
+            FindPointsDTO findPointsDTO = new FindPointsDTO();
+            findPointsDTO.FileIds.AddRange([FileLongId, FileLatId]);
+            findPointsDTO.GraphDataPoints.Add(new GraphDataDTO() { GraphDataId = StartId });
+            findPointsDTO.GraphDataPoints.Add(new GraphDataDTO() { GraphDataId = FinishId });
+
+            List<Points> points = await _findPoints.FindPoints(findPointsDTO);
+
+            if (points != null)
+            {
+                return Ok(points);
             }
 
             return BadRequest("Не удалось загрузить файл на сервер");
