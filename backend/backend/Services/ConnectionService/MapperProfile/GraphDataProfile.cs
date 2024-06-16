@@ -11,6 +11,8 @@ namespace backend.Services.ConnectionService.MapperProfile
             CreateMap<GraphDataDTO, GraphData>()
                 .ForMember(dest => dest.Id, ag => ag.MapFrom(x => x.GraphDataId))
                 .ForMember(dest => dest.PointName, ag => ag.MapFrom(x => x.PointName))
+                .ForMember(dest => dest.Longitude, ag => ag.MapFrom(x => x.Longitude))
+                .ForMember(dest => dest.Latitude, ag => ag.MapFrom(x => x.Latitude))
                 .ReverseMap();
         }
     }
