@@ -15,4 +15,8 @@ export class PostRouteService {
   public PostRoute(route: RouteModel): Observable<RouteModel> {
     return this.http.post<RouteModel>(environment.apiUrl + this.url, route);
   }
+
+  public getRoute(): Observable<RouteModel[]> {
+    return this.http.get<RouteModel[]>(environment.apiUrl + this.url);
+  }
 }

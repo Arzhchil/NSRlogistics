@@ -16,6 +16,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class ListShipsPageComponent implements OnInit {
   PointData: Point[] = [];
+  routeData: RouteModel[] = [];
   start: string = '';
   finish: string = '';
   routes: RouteModel = new RouteModel();
@@ -35,6 +36,7 @@ export class ListShipsPageComponent implements OnInit {
     this.getPointService.getPoints().subscribe({
       next: (points: Point[]) => {
         this.PointData = points;
+        console.log(points)
       },
       error: (error) => {
         console.error(error);
@@ -48,14 +50,22 @@ export class ListShipsPageComponent implements OnInit {
         console.error(error);
       },
     });
+    this.routeService.getRoute().subscribe({
+      next: (routes: RouteModel[]) => {
+        console.log(routes)
+        this.routeData = routes;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 
   public async postRoute(routes: RouteModel) {
     let t = this;
 
     await lastValueFrom(t.routeService.PostRoute(routes))
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((e) => {
         console.error('Ошибка при загрузке маршрута', e);
       });
@@ -65,8 +75,7 @@ export class ListShipsPageComponent implements OnInit {
     let t = this;
 
     await lastValueFrom(t.shipService.PostShip(ship))
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((e) => {
         console.error('Ошибка при загрузке маршрута', e);
       });
@@ -100,6 +109,7 @@ export class ListShipsPageComponent implements OnInit {
       t.selectedShip = currentShip;
       t.start = '';
       t.finish = '';
+      t.ship = '';
 
       t.postRoute(t.routes);
       t.postShip(t.selectedShip);
