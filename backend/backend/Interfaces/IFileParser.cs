@@ -4,6 +4,6 @@ namespace backend.Interfaces
 {
     public interface IFileParser
     {
-        public Task<int[,]> FileParser(ParserDTO parser);
+        public Task<double[,]> FileParser(ParserDTO parser);
     }
 }

@@ -16,8 +16,8 @@ namespace backend.Services.FindPathService
         /// <summary>
         /// Стоимость пути до этой точки от начальной
         /// </summary>
-        public int Cost;
-        public int EstimatedCost;
+        public double Cost;
+        public double EstimatedCost;
         public Point Location;
 
         public int CompareTo(Node other)
@@ -28,18 +28,18 @@ namespace backend.Services.FindPathService
 
     public struct Point
     {
-        public int X;
-        public int Y;
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 
     public class AStar
     {
-        private int[,] map;
-        private PriorityQueue<Node, int> queue = new PriorityQueue<Node, int>();
+        private double[,] map;
+        private PriorityQueue<Node, double> queue = new PriorityQueue<Node, double>();
         private List<Node> path = new List<Node>();
         private bool[,] visited;
 
-        public AStar(int[,] map)
+        public AStar(double[,] map)
         {
             this.map = map;
             this.visited = new bool[map.GetLength(0), map.GetLength(1)];
@@ -73,10 +73,10 @@ namespace backend.Services.FindPathService
                     if (pt.X < 0 || pt.X >= map.GetLength(0) || pt.Y < 0 || pt.Y >= map.GetLength(1) || visited[pt.X, pt.Y])
                         continue;
 
-                    
 
-                    int cost = node.Cost + map[pt.X, pt.Y];
-                    int est = Math.Max(Math.Abs(goal.X - pt.X), Math.Abs(goal.Y - pt.Y));
+
+                    double cost = node.Cost + map[pt.X, pt.Y];
+                    double est = Math.Max(Math.Abs(goal.X - pt.X), Math.Abs(goal.Y - pt.Y));
 
                     queue.Enqueue(new Node { Location = pt, Parent = node, Cost = cost, EstimatedCost = est }, cost + est);
                     visited[pt.X, pt.Y] = true;  // Marked as visited
