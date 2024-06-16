@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FileUploadService } from '../../services';
+import { FileUploadService, PostSearchPathService } from '../../services';
+import { SearchPathModel } from '../../models';
 
 @Component({
   selector: 'app-dropzone',
@@ -9,8 +10,13 @@ import { FileUploadService } from '../../services';
 export class DropzoneComponent {
   isDragging = false;
   file: File | null = null;
+  fileID!: string;
+  searchPathModel: SearchPathModel = new SearchPathModel();
 
-  constructor(private fileUploadService: FileUploadService) {}
+  constructor(
+    private fileUploadService: FileUploadService,
+    private searchPathService: PostSearchPathService
+  ) {}
 
   onDragOver(event: DragEvent): void {
     event.preventDefault();
@@ -67,7 +73,19 @@ export class DropzoneComponent {
 
   private uploadFile(file: File): void {
     this.fileUploadService.uploadFiles(file).subscribe({
-      next: (response) => console.log('Файл успешно загружен', response),
+      next: (response) => {
+        console.log('Файл успешно загружен', response);
+        this.fileID = response;
+        this.searchPathModel.fileId = this.fileID;
+        this.searchPathModel.workBookSheet = 0;
+        this.searchPathService.PostSearchFile(this.searchPathModel).subscribe({
+          next: (response) => {
+            console.log('Ответ', response);
+          },
+          error: (error) => console.error('Ошибка', error),
+        });
+        console.log(this.searchPathModel);
+      },
       error: (error) => console.error('Ошибка загрузки файла', error),
     });
   }
