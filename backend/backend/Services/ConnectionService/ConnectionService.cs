@@ -1,6 +1,7 @@
 ﻿using backend.DTOs;
 using backend.Interfaces;
 using backend.Services.CRUDService;
+using backend.Services.FindPathService;
 using backend.Services.LoadService;
 using backend.Services.Parser;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace backend.Services.ConnectionService
             builder.Services.AddScoped<ICRUD<Models.Route>, RouteService>();
             builder.Services.AddScoped<ICRUD<ShipCrudDTO>, ShipService>();
             builder.Services.AddScoped<ICRUD<GraphDataDTO>, GraphDataService>();
+            builder.Services.AddScoped<IFindPoints, FindPointsService>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
         }
     }
