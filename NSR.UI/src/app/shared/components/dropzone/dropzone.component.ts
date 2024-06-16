@@ -35,9 +35,9 @@ export class DropzoneComponent {
       if (this.isValidFile(droppedFile)) {
         this.file = droppedFile;
         console.log(this.file); //Затычка, потом убрать
-        this.uploadFile(this.file); // Загрузка файла
+        this.uploadFile(this.file);
       } else {
-        alert('Неверный тип файла. Разрешены только файлы .xlsx'); // Добавить модалку
+        alert('Неверный тип файла. Разрешены только файлы .xlsx');
         console.error('Неверный тип файла. Разрешены только файлы .xlsx');
       }
       event.dataTransfer.clearData();
@@ -53,9 +53,9 @@ export class DropzoneComponent {
       if (this.isValidFile(selectedFile)) {
         this.file = selectedFile;
         console.log(this.file); //Затычка, потом убрать
-        this.uploadFile(this.file); // Загрузка файла
+        this.uploadFile(this.file);
       } else {
-        alert('Неверный тип файла. Разрешены только файлы .xlsx'); // Добавить модалку
+        alert('Неверный тип файла. Разрешены только файлы .xlsx');
         console.error('Неверный тип файла. Разрешены только файлы .xlsx');
       }
     }
